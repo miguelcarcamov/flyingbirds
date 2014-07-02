@@ -85,9 +85,9 @@ _Task Ave
 		glTranslatef(x, y, 0.0f);
 		glRotatef(direccion, 0, 0, 1);
 	    glBegin(GL_TRIANGLES);
-			glVertex3f(-0.5, -15, 0);//triangle one first vertex
-	      	glVertex3f( 0.5, -15, 0);//triangle one second vertex
-	      	glVertex3f( 0,  -13.1, 0);//triangle one third vertex    
+			glVertex3f(-5, -15, 0);//triangle one first vertex
+	      	glVertex3f( 5, -15, 0);//triangle one second vertex
+	      	glVertex3f( 0,  15, 0);//triangle one third vertex    
 	    glEnd();
 		glRotatef(-direccion, 0, 0, 1);
 		glTranslatef(-x, -y, 0.0f);
