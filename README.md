@@ -34,4 +34,8 @@ Done tasks
 - [ ] Give a random position to 'em without srand() 
 - [ ] Give a random direction to 'em between [0, 2*pi] without srand()
 
+Compiling
+==================
+make run
+
 

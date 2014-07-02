@@ -26,6 +26,7 @@ Done tasks
 	- [ ] Travel max speed
 	- [ ] Travel max force
 	- [ ] Travel acceleration
+ 	- [ ] Weights
 - [x] Bird class
 - [x] Make world 640x640
 - [ ] Separate, alineate and cohesionate birds.
