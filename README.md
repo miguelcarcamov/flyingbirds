@@ -8,15 +8,20 @@ Before make, make sure you have uC++ installed as well as OpenGL
 Installing uC++
 ===============
 
-sudo cp u++6.0.0.sh /usr/local/bin
+In the folder uC++ execute file u++-6.0.0.sh
 
-cd /usr/local/bin
+$ sudo sh u++-6.0.0.sh -p /opt -c /usr/local/bin
 
-sudo sh u++-6.0.0.sh 
-
-Installing OpenGL
+Installing OpenGL and G++
 ==================
-sudo apt-get install freeglut3-dev
+$ sudo apt-get install freeglut3
+$ sudo apt-get install freeglut3-dev 
+$ sudo apt-get install binutils-gold
+$ sudo apt-get install g++
+$ sudo apt-get install g++ cmake
+$ sudo apt-get install libglew-dev
+$ sudo apt-get install mesa-common-dev
+$ sudo apt-get install libglew1.5-dev libglm-dev
 
 Done tasks
 ==================
