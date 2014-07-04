@@ -1,4 +1,5 @@
 #include "Graphics.h"
+#include "random/Math.h"
 
 #define STEP_ROTACION 10
 #define MAXIMO_DESPLAZAMIENTO 10
@@ -23,12 +24,12 @@ void Graphics::draw(){
 	//glBegin(GL_TRIANGLES);//start drawing triangles
 		//glVertex3f( POSICION_X , POSICION_Y , POSICION_Z); // Dibuja un vertice
     //glEnd();//end drawing of triangles
-
 	int x;
 	int y;
 	int direccion;
   	for (int i = 0; i < 5; i++)
   	{
+
   		x 		  = birds[i]->x;
   		y 		  = birds[i]->y;
   		direccion = birds[i]->direccion;

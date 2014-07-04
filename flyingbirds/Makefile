@@ -8,7 +8,7 @@ CFLAGS = -c -w
 
 LDLIBS = -lglut -lGLU -lGL
 
-main: build/main.o build/Bird.o build/getOptions.o build/Graphics.o
+main: build/main.o build/Bird.o build/getOptions.o build/Graphics.o build/Math.o build/Random.o
 	@ u++ build/*.o -o bin/FlyingBirds.run $(LDLIBS)
 	@ echo "The compilation has been completed successfully"
 
@@ -23,6 +23,14 @@ build/Bird.o: src/eda/Bird.cpp
 build/getOptions.o: src/getOptions/getOptions.cpp
 	@ echo "src/getOptions/getOptions.cpp"
 	@ u++ $(CFLAGS) $(INC_DIRS) src/getOptions/getOptions.cpp -o build/getOptions.o
+
+build/Math.o: src/random/Math.cpp
+	@ echo "src/random/Math.cpp"
+	@ u++ $(CFLAGS) $(INC_DIRS) src/random/Math.cpp -o build/Math.o
+
+build/Random.o: src/random/Random.cpp
+	@ echo "src/random/Random.cpp"
+	@ u++ $(CFLAGS) $(INC_DIRS) src/random/Random.cpp -o build/Random.o
 
 build/Graphics.o: src/graphics/Graphics.cpp
 	@ echo "src/graphics/Graphics.cpp"
