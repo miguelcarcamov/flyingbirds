@@ -1,12 +1,13 @@
 #ifndef GETOPTIONS_H_INCLUDED
 #define GETOPTIONS_H_INCLUDED
 
+#include <uC++.h>
 #include <iostream>
 #include <getopt.h>
 
 using namespace std;
 
-class File
+class getOptions
 {
 private:
 	int numberBirds;
@@ -16,19 +17,19 @@ private:
 public:
 	getOptions();
 	//GETTERS
-	int getOptions::getNumberBirds();
-	double getOptions::getSeparation();
-	double getOptions::getCohesion();
-	double  getOptions::getAlignment();
+	int getNumberBirds();
+	double getSeparation();
+	double getCohesion();
+	double getAlignment();
 
 //SETTERS
-	void getOptions::setNumberBirds(int numberBirds);
-	void getOptions::setSeparation(double separation);
-	void getOptions::setCohesion(double cohesion);
-	void getOptions::setAlignment(double alignment);
+	void setNumberBirds(int numberBirds);
+	void setSeparation(double separation);
+	void setCohesion(double cohesion);
+	void setAlignment(double alignment);
 	//Methods
 	void help_printing();
-	void getOptions(int argc, char **argv);
+	void FunctionGetOptions(int argc, char **argv);
 
 };
 

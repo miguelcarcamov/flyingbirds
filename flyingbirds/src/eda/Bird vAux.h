@@ -11,13 +11,18 @@
 
 _Task Bird {
 public:
-	int x;
-	int y;
+	double p[2];
+	double v[2];
+	double dir;
 
-	int destino_x;
-	int destino_y;
+	double S;
+	double C;
+	double A;
 
-	double direccion;
+	double F;
+
+	double destino_x;
+	double destino_y;
 
 
 	protected:
@@ -25,7 +30,7 @@ public:
 
 	public:
 		//Constructor
-		Bird(int x, int y, double direccion);
+		Bird(double x, double y, double direccion);
 		~Bird(){};
 
 		//Methods

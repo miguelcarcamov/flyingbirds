@@ -7,8 +7,8 @@ using namespace std;
 
 void uMain::main() {
 
-	getOptions getoptions = getOptions();
-	getoptions.getOptions(argc, argv);
+	getOptions input = getOptions();
+	input.FunctionGetOptions(argc, argv);
     Graphics graphics = Graphics();
     graphics.initGraphics();
     

@@ -14,7 +14,7 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-#define RADIO_CREACION 10
+#define RADIO_CREACION 100
 
 Bird **birds;
 
@@ -27,7 +27,7 @@ void Graphics::draw(){
 	int x;
 	int y;
 	int direccion;
-  	for (int i = 0; i < 100; i++)
+  	for (int i = 0; i < 5; i++)
   	{
   		x 		  = birds[i]->x;
   		y 		  = birds[i]->y;
@@ -44,7 +44,7 @@ void Graphics::draw(){
   		// ** Nota: OpenGl al parecer procesa los eventos alrevez, por lo que se ejecutaria la rotacion
   		// ** y luego la traslacion
   		glTranslatef(x, y, 0.0f);
-		glRotatef(direccion, 0, 0, 1);
+		glRotatef(180, 0, 0, 1);
   		
 
   		/*
@@ -54,13 +54,16 @@ void Graphics::draw(){
   				Lado (isosceles): 2
   		*/
   		glBegin(GL_TRIANGLES); // Inicio del dibujo
-			glVertex3f(-0.5, 0, 0); // Primer vertice
+			/*glVertex3f(-0.5, 0, 0); // Primer vertice
 	      	glVertex3f( 0.5, 0, 0); // Segundo vertice
-	      	glVertex3f( 0,  1.936491, 0); // Tercer vertice
+	      	glVertex3f( 0,  1.936491, 0); // Tercer vertice*/
+	      	glVertex3f(-15, 0, 0); // Primer vertice
+	      	glVertex3f( 15, 0, 0); // Segundo vertice
+	      	glVertex3f( 0,  45, 0); // Tercer vertice
 	    	glEnd(); // Fin del dibujo
 
 	    // Deshago las operaciones de rotacion y translacion
-	    glRotatef(-direccion, 0, 0, 1);
+	    glRotatef(-180, 0, 0, 1);
 		glTranslatef(-x, -y, 0.0f);
 		
 		// Le indico una direccion de destino ficticia (en este caso,
@@ -153,10 +156,10 @@ void Graphics::initGraphics(){
     glutCreateWindow("Flying Birds"); // Titulo de la ventana
     glutDisplayFunc(display); // display es la funcion que
 
-    int numero_de_aves = 100;
+    int numBirds = 5;
 	
 	//srand (time(NULL));
-	srand (10);
+	srand(10);
 
 	// Limite inferior y superior para crear las birds horizontalmente respecto al centro
 	// Ej: Si la ventana es de 640 x 640, el centro sera (320, 320),
@@ -170,9 +173,9 @@ void Graphics::initGraphics(){
 	int max_y = WIN_WIDTH / 2 + RADIO_CREACION;
 	int min_y = WIN_WIDTH / 2 - RADIO_CREACION;
 
-	birds = new Bird * [numero_de_aves];
+	birds = new Bird * [numBirds];
     
-    for (unsigned i = 0; i < numero_de_aves; i++)
+    for (unsigned i = 0; i < numBirds; i++)
     {
     	int x = rand()%(max_x - min_x) + min_x;
     	int y = rand()%(max_y - min_y) + min_y;

@@ -1,11 +1,10 @@
 #include "getOptions.h"
-using namespace std;
 
 getOptions::getOptions() {
-  this-> numberBirds = 0;
-  this-> separation = 0.0;
-  this-> cohesion = 0.0;
-  this-> alignment = 0.0;
+  this->numberBirds = 0;
+  this->separation = 0.0;
+  this->cohesion = 0.0;
+  this->alignment = 0.0;
 }
 
 //GETTERS
@@ -44,7 +43,7 @@ void getOptions::setAlignment(double alignment){
   this->alignment=alignment;
 }
 
-void help_printing ()
+void getOptions::help_printing ()
 {
     cout << "Example: executable_name options [ arguments ...]\n" << endl;
     cout << "    -h  --help                  Shows this help\n" << endl;
@@ -54,7 +53,7 @@ void help_printing ()
     cout << "    -a  --alignment              Reads the alignment of the birds\n" << endl;
 }
 
-void getOptions(int argc, char **argv){
+void getOptions::FunctionGetOptions(int argc, char **argv){
 	int next_opt;
 	const char* const short_op = "hN:s:c:a:" ;
 	const struct option long_op[] =
@@ -83,16 +82,16 @@ void getOptions(int argc, char **argv){
   				help_printing();
   				exit(EXIT_SUCCESS);
   			case 'N':
-  				this-> numberBirds = atoi(optarg);
+  				this->numberBirds = atoi(optarg);
   				break;
   			case 's':
-  				this-> separation = atof(optarg);
+  				this->separation = atof(optarg);
   				break;
   			case 'c':
-  				this-> cohesion = atof(optarg);
+  				this->cohesion = atof(optarg);
   				break;
   			case 'a':
-  				this-> alignment = atof(optarg);
+  				this->alignment = atof(optarg);
   				break;
   			case '?':
   				help_printing();
