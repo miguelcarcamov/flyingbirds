@@ -1,4 +1,4 @@
-flyingbirds
+Flying Birds
 ===========
 
 Flying birds Simulation using uC++ and openGL
