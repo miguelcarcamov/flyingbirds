@@ -76,19 +76,39 @@ void Bird::Rotar(float angulo){
 }*/
 
 void Bird::Separation(){
-/*	vector<double> r[2];
+//void Bird::Separation(Birds **birds){
+/*	double r[2];
 	for(unsigned i=0 ; i<numBirs ; i++){
 		D = maths.distEuclideana(p, birds[i].p)
 		if(D > Dmax){
-			r.push = 0;
+			r[X] = 0;
+			r[Y] = 0;
 		} else {
-			r[X] = ()
-		}
-	}*/
+			r[X] = (p[X] - numBirs[i].p[X]) / D;
+			r[Y] = (p[Y] - numBirs[i].p[Y]) / D;
+ 		}
+
+ 		S[X] = S[X] + r[X];
+ 		S[Y] = S[Y] + r[X];
+	}
+
+	S = maths.normalization(S);*/
 }
 
 void Bird::Cohesion(){
+/*	double r[2];
+	for(unsigned i=0 ; i<numBirs ; i++){
+		D = maths.distEuclideana(p, birds[i].p)
+		if(D > Dmax){
+			S[X] = S[X] + r[X];
+ 		S[Y] = S[Y] + r[X];
+		} else {
+			S[X] = S[X] + r[X];
+ 			S[Y] = S[Y] + r[X];
+ 		}	
+	}
 
+	S = maths.normalization(S)*/;
 }
 
 void Bird::Alignmet(){
