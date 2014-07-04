@@ -26,7 +26,7 @@ class Graphics {
 		static void dibujarLineasRojas();
 		void setup();
 		static void display();
-		void initGraphics(int *argc, char **argv);
+		void initGraphics();
 		//void handleKeypress(int key, int x, int y);
 };
 

@@ -142,8 +142,11 @@ void Graphics::display(){
     }
 }
 
-void Graphics::initGraphics(int *argc, char **argv){
-	glutInit(argc, argv);
+void Graphics::initGraphics(){
+	int argc = 1;	
+	char *argv[] = {"Graphics"};
+
+	glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowPosition(300, 0); // Posicion de la ventana en pixeles
     glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT); // Tamano de la ventana en pixeles

@@ -5,5 +5,5 @@ using namespace std;
 
 void uMain::main() {
     Graphics graphics = Graphics();
-    graphics.initGraphics(&argc, argv);
+    graphics.initGraphics();
 }
