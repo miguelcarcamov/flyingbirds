@@ -42,6 +42,6 @@ Done tasks
 
 Compiling
 ==================
-make run
+$ make flying
 
 
