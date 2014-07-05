@@ -45,15 +45,22 @@ double Math::roundZero(double number)
 double *Math::calculatePosition(double radio)
 {
   double p[2];
-  p[0] = 1.5;
-  p[1] = 2.5;
   double angle = uniform(0,2*PI);
   double radius = sqrt(uniform(0,1))*radio;
 
-  p[0] = 320 + radio*cos(angle);
-  p[1] = 320 + radio*sin(angle);
+  p[0] = 320 + radius*cos(angle);
+  p[1] = 320 + radius*sin(angle);
   
   //cout<<"Datos: X:"<< p[0] << ":: Y:" << p[1] << ":: Angle: "<< angle << endl;
 
   return p;
+}
+
+double Math::euclideanDistance(double *p, double *q){
+  x = q[0]-p[0];
+  y = q[1]-p[1];
+  distance = sqrt(pow(x,2)+pow(y,2));
+
+
+  return distance
 }

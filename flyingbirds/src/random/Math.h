@@ -15,6 +15,7 @@ class Math{
         double uniform(double a, double b);
         double roundZero(double number);
         double *calculatePosition(double radius);
+        double Math::euclideanDistance(double *p, double *q);
 
 };
 
