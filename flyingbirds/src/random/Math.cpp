@@ -25,7 +25,7 @@ double Math::uniform(double a, double b)
 		exit(0);
 	}
 	else{
- 		double u  = this->random.calcRandom();
+ 		double u = this->random.calcRandom();
 		double result = a+((b-a)*u);
 		return result;
 	}
@@ -50,8 +50,8 @@ double *Math::calculatePosition(double radio)
   double angle = uniform(0,2*PI);
   double radius = sqrt(uniform(0,1))*radio;
 
-  p[0] = radius*cos(angle) + 320;
-  p[1] = radius*sin(angle) + 320;
+  p[0] = 320 + radio*cos(angle);
+  p[1] = 320 + radio*sin(angle);
   
   //cout<<"Datos: X:"<< p[0] << ":: Y:" << p[1] << ":: Angle: "<< angle << endl;
 

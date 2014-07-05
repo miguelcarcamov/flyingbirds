@@ -15,10 +15,11 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-#define RADIO_CREACION 10
+#define RADIO_CREACION 50
 
 //Global Variable
 Bird **birds;
+int numBirds = 30;
 
 Graphics::Graphics(){
 	Math math = Math();
@@ -32,7 +33,7 @@ void Graphics::draw(){
 	int x;
 	int y;
 	int direccion;
-  	for (int i = 0; i < 5; i++)
+  	for (int i = 0; i < numBirds; i++)
   	{
 
   		x 		  = birds[i]->x;
@@ -63,9 +64,9 @@ void Graphics::draw(){
 			/*glVertex3f(-0.5, 0, 0); // Primer vertice
 	      	glVertex3f( 0.5, 0, 0); // Segundo vertice
 	      	glVertex3f( 0,  1.936491, 0); // Tercer vertice*/
-	      	glVertex3f(-15, 0, 0); // Primer vertice
-	      	glVertex3f( 15, 0, 0); // Segundo vertice
-	      	glVertex3f( 0,  45, 0); // Tercer vertice
+	      	glVertex3f(-5, 0, 0); // Primer vertice
+	      	glVertex3f( 5, 0, 0); // Segundo vertice
+	      	glVertex3f( 0, 5, 0); // Tercer vertice
 	    	glEnd(); // Fin del dibujo
 
 	    // Deshago las operaciones de rotacion y translacion
@@ -161,8 +162,6 @@ void Graphics::initGraphics(){
     glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT); // Tamano de la ventana en pixeles
     glutCreateWindow("Flying Birds"); // Titulo de la ventana
     glutDisplayFunc(display); // display es la funcion que
-
-    int numBirds = 5;
 	
 	//srand (time(NULL));
 	srand(10);
