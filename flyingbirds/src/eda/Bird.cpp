@@ -1,10 +1,13 @@
 #include "Bird.h"
 #include "random/Math.h"
 
+#include <iostream>
+using namespace std;
+
 #define STEP_ROTACION 10
 #define MAXIMO_DESPLAZAMIENTO 10
-#define PI 3.1416
 
+#define VInit 1
 #define WIN_WIDTH  640
 #define WIN_HEIGHT  640
 #define PADDING_X  30
@@ -15,42 +18,63 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
+
 Bird::Bird(int radio){
 	Math math = Math();
-	double *pos = math.calculatePosition(radio);
-	this->x = pos[0];
-	this->y = pos[1];
-	this->direccion = math.;
+	
+	double *P = math.calculatePositionInit(radio);
+	this->Px = P[0];
+	this->Py = P[1];
+
+	this->Dir = math.calculateDirection();
+
+	double *V = math.calculatePosition(VInit, Dir);
+	this->Vx = V[0];
+	this->Vy = V[1];
+
+	this->S = 0;
+	this->C = 0;
+	this->A = 0;
+
+	this->F = 0;
 }
 
 void Bird::main(){
-	int avance_x = 1;
-	int avance_y = 1;
+	double avance_x = 1;
+	double avance_y = 1;
 
 	while(true){
+/*		unsigned miliseconds = 5;
+		usleep(miliseconds * 1000);*/
 		//avance_x = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
 		//avance_y = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
-		avance_x = 1;
-		avance_y = 1;
+		/*avance_x = this->Vx;
+		avance_y = this->Vx;*/
 
-		int x_anterior = x;
-		int y_anterior = y;
+		cout << "X " << avance_x << " :: Y " << avance_y << endl;
 
-		if(this->x + avance_x >= MAX_X){
-			this->x = MIN_X;
+		int x_anterior = this->Px;
+		int y_anterior = this->Py;
+
+		//Axis X
+		if(this->Px + avance_x >= MAX_X){
+			this->Px = MIN_X;
 		}
-		this->x += avance_x;
 
-		if(this->y + avance_y >= MAX_Y){
-			this->y = MIN_Y;
+		this->Px = this->Px + avance_x;
+
+		//Axis Y
+		if(this->Py + avance_y >= MAX_Y){
+			this->Py = MIN_Y;
 		}
-		this->y += avance_y;
 
-		direccion = -atan2(destino_x - x, destino_y - y) * 180 / PI;
+		this->Py = this->Py + avance_y;
+
+		//Direccion = -atan2(destino_x - x, destino_y - y) * 180 / PI;
 		
-		//printf("(%d, %d) %f\n", x, y, direccion);
-		unsigned miliseconds = 5;
-		usleep(miliseconds * 1000000);
+		//printf("(%d, %d) %f\n", p[x], p[y], Dir);
+		unsigned miliseconds = 100;
+		usleep(miliseconds * 100000);
 	}
 }
 
@@ -60,7 +84,7 @@ void Bird::main(){
 }
 
 void Bird::Rotar(float angulo){
-	this->direccion = angulo;
+	this->Direccion = angulo;
 }
 */
 /*void Bird::Draw(){
@@ -68,13 +92,13 @@ void Bird::Rotar(float angulo){
 	double rotate_y = 1.0f;
 
 	glTranslatef(x, y, 0.0f);
-	glRotatef(direccion, 0, 0, 1);
+	glRotatef(Direccion, 0, 0, 1);
     glBegin(GL_TRIANGLES);
 		glVertex3f(-0.5, -15, 0);//triangle one first vertex
       	glVertex3f( 0.5, -15, 0);//triangle one second vertex
       	glVertex3f( 0,  -13.1, 0);//triangle one third vertex    
     glEnd();
-	glRotatef(-direccion, 0, 0, 1);
+	glRotatef(-Direccion, 0, 0, 1);
 	glTranslatef(-x, -y, 0.0f);
 }*/
 

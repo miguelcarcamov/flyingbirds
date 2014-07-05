@@ -42,12 +42,9 @@ double Math::roundZero(double number)
         return number;
 }
 
-double *Math::calculatePosition()
+double *Math::calculatePositionInit(double radio)
 {
   double p[2];
-  //oansdoansd
-  //kiasdoasd
-  double merge ql;
   double angle = uniform(0,2*PI);
   double radius = sqrt(uniform(0,1))*radio;
 
@@ -57,6 +54,15 @@ double *Math::calculatePosition()
   //cout<<"Datos: X:"<< p[0] << ":: Y:" << p[1] << ":: Angle: "<< angle << endl;
 
   return p;
+}
+
+double *Math::calculatePosition(double scalar, double angle){
+  double vector[2];
+
+  vector[0] = scalar*cos((angle*2*PI)/180);
+  vector[1] = scalar*sin((angle*2*PI)/180);
+  
+  return vector;
 }
 
 double Math::calculateDirection()

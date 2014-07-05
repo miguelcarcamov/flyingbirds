@@ -19,7 +19,7 @@
 
 //Global Variable
 Bird **birds;
-int numBirds = 100;
+int numBirds = 1;
 
 Graphics::Graphics(){
 	Math math = Math();
@@ -30,15 +30,20 @@ void Graphics::draw(){
 	//glBegin(GL_TRIANGLES);//start drawing triangles
 		//glVertex3f( POSICION_X , POSICION_Y , POSICION_Z); // Dibuja un vertice
     //glEnd();//end drawing of triangles
-	int x;
-	int y;
-	int direccion;
+	int AxisX;
+	int AxisY;
+	int Direction;
+
+
   	for (int i = 0; i < numBirds; i++)
   	{
+  		/*unsigned miliseconds = 5;
+		usleep(miliseconds * 1000);*/
 
-  		x 		  = birds[i]->x;
-  		y 		  = birds[i]->y;
-  		direccion = birds[i]->direccion;
+  		AxisX     = birds[i]->Px;
+		AxisY 	  = birds[i]->Py;
+  		Direction = birds[i]->Dir;
+  		//cout << birds[i]->p[0] << "::" << birds[i]->p[1] << endl;
   		//cout << "Dibuje" << endl;
   		//birds[i]->Draw();
 
@@ -47,11 +52,11 @@ void Graphics::draw(){
   		
 
   		// Se supone que en este punto, opengl dibujara cualquier cosa respecto a 0, 0, 0
-  		// Por lo tanto, le decimos que rote en "direccion" grados los dibujos y los traslate a la posicion x, y, 0
+  		// Por lo tanto, le decimos que rote en "Direccion" grados los dibujos y los traslate a la posicion x, y, 0
   		// ** Nota: OpenGl al parecer procesa los eventos alrevez, por lo que se ejecutaria la rotacion
   		// ** y luego la traslacion
-  		glTranslatef(x, y, 0.0f);
-		glRotatef(180, 0, 0, 1);
+  		glTranslatef(AxisX, AxisY, 0.0f);
+		glRotatef(Direction, 0, 0, 1);
   		
 
   		/*
@@ -70,10 +75,10 @@ void Graphics::draw(){
 	    glEnd(); // Fin del dibujo
 
 	    // Deshago las operaciones de rotacion y translacion
-	    glRotatef(-180, 0, 0, 1);
-		glTranslatef(-x, -y, 0.0f);
+	    glRotatef(-Direction, 0, 0, 1);
+		glTranslatef(-AxisX, -AxisY, 0.0f);
 		
-		// Le indico una direccion de destino ficticia (en este caso,
+		// Le indico una Direccion de destino ficticia (en este caso,
 		// la esquina superior derecha de la pantalla)
 		birds[i]->destino_x = 640;
 		birds[i]->destino_y = 640;

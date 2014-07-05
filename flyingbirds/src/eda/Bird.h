@@ -11,14 +11,20 @@
 
 _Task Bird {
 public:
-	double x;
-	double y;
+	double Px;
+	double Py;
+	double Vx;
+	double Vy;
+	double Dir;
+
+	double S;
+	double C;
+	double A;
+
+	double F;
 
 	int destino_x;
 	int destino_y;
-
-	double direccion;
-
 
 	protected:
 		void main();
