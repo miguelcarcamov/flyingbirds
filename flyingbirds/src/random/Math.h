@@ -20,6 +20,7 @@ class Math{
         double euclideanDistance(double *p, double *q);
         double *maxV(double *vector, double scalar);
         double *minV(double *vector, double scalar);
+        void normalize(double *vector)
 
 };
 

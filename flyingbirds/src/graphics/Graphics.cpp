@@ -51,9 +51,9 @@ void Graphics::draw(){
 		*/
 
 		glBegin(GL_TRIANGLES); // Inicio del dibujo
-      	glVertex3d(-5, 0, 0); // Primer vertice
-      	glVertex3d( 5, 0, 0); // Segundo vertice
-      	glVertex3d( 0, 15, 0); // Tercer vertice
+      	glVertex3d(-0.5, 0, 0); // Primer vertice
+      	glVertex3d( 0.5, 0, 0); // Segundo vertice
+      	glVertex3d( 0, 1.93649, 0); // Tercer vertice
     	glEnd(); // Fin del dibujo
 
     	// Deshago las operaciones de rotacion y translacion
