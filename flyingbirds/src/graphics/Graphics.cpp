@@ -33,14 +33,15 @@ void Graphics::draw(){
 	for (int i = 0; i < numBirds; i++)
 	{
 		AxisX     = birds[i]->Px;
-   	AxisY 	  = birds[i]->Py;
+   		AxisY 	  = birds[i]->Py;
 		Direction = birds[i]->Dir - 90;
-
-  	glColor3d(1, 1, 1);
+		glPushMatrix();
+  		glColor3d(1, 1, 1);
 
   	//Operacion para el triangulo
-		glTranslated(AxisX, AxisY, 0.0f);
-	  glRotated(Direction, 0, 0, 1);
+		glTranslated(AxisX, AxisY, 0.0);
+	  	glRotated(Direction, 0.0, 0.0, 1.0);
+
 		
 		/*
 			Se mantienen estas proporciones:
@@ -48,15 +49,17 @@ void Graphics::draw(){
 				Altura: 1.9364916731
 				Lado (isosceles): 2
 		*/
+
 		glBegin(GL_TRIANGLES); // Inicio del dibujo
       	glVertex3d(-5, 0, 0); // Primer vertice
       	glVertex3d( 5, 0, 0); // Segundo vertice
       	glVertex3d( 0, 15, 0); // Tercer vertice
-    glEnd(); // Fin del dibujo
+    	glEnd(); // Fin del dibujo
 
-    // Deshago las operaciones de rotacion y translacion
-    glRotated(-Direction, 0, 0, 1);
-	  glTranslated(-AxisX, -AxisY, 0.0f);
+    	// Deshago las operaciones de rotacion y translacion
+    	glRotated(-Direction, 0, 0, 1);
+	  	glTranslated(-AxisX, -AxisY, 0.0);
+	  	glPopMatrix();
 	}
 }
 
