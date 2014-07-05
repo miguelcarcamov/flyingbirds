@@ -53,7 +53,7 @@ void getOptions::help_printing ()
     cout << "    -a  --alignment              Reads the alignment of the birds\n" << endl;
 }
 
-void getOptions::FunctionGetOptions(int argc, char **argv){
+void getOptions::GetOpt(int argc, char **argv){
 	int next_opt;
 	const char* const short_op = "hN:s:c:a:" ;
 	const struct option long_op[] =

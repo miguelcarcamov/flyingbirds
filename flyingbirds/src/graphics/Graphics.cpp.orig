@@ -3,7 +3,11 @@
 
 //Global variable
 Bird **birds;
+<<<<<<< HEAD
+int numBirds = 100;
+=======
 int numBirds;
+>>>>>>> da9c7ad00f9b2537cc423205247a3f5811ecb1ee
 
 Graphics::Graphics(int numBirdsInput){
 	math = Math();

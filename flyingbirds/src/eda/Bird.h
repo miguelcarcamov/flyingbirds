@@ -21,17 +21,20 @@ public:
 	double C;
 	double A;
 
+	double Ws;
+	double Wc;
+	double Wa;
+
 	double F;
 
-	int destino_x;
-	int destino_y;
+	int numBirds;
 
 	protected:
 		void main();
 
 	public:
 		//Constructor
-		Bird(int radio);
+		Bird(int radio, double Ws, double Wc, double Wa, int numBirds);
 		~Bird(){};
 
 		//Methods

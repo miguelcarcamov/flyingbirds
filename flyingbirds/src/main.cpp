@@ -7,9 +7,9 @@ using namespace std;
 
 void uMain::main() {
 
-	getOptions input = getOptions();
-	input.FunctionGetOptions(argc, argv);
-    Graphics graphics = Graphics();
-    graphics.initGraphics();
+	getOptions weights = getOptions();
+	weights.GetOpt(argc, argv);
+    Graphics graphics = Graphics(weights.getNumberBirds());
+    graphics.initGraphics(weights);
     
 }
