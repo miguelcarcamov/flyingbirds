@@ -4,20 +4,6 @@
 #include <iostream>
 using namespace std;
 
-#define STEP_ROTACION 10
-#define MAXIMO_DESPLAZAMIENTO 10
-
-#define VInit 1
-#define WIN_WIDTH  640
-#define WIN_HEIGHT  640
-#define PADDING_X  30
-#define PADDING_Y  30
-
-#define MAX_X WIN_WIDTH - PADDING_X // limite derecho hasta donde un ave puede llegar horizontalmente
-#define MAX_Y WIN_HEIGHT - PADDING_Y // limite superior hasta donde un ave puede llegar verticalmente
-#define MIN_X PADDING_X
-#define MIN_Y PADDING_Y
-
 Math math = Math();
 
 Bird::Bird(int radio, double Ws, double Wc, double Wa, int numBirds){
@@ -92,7 +78,7 @@ void Bird::main(){
 }
 
 void Bird::Separation(Bird **birds){
-/*	double r[2];
+	double r[2];
 	for(unsigned i=0 ; i<numBirds ; i++){
 		D = maths.euclideanDistance(p, birds[i].p)
 		if(D > Dmax){
@@ -107,11 +93,11 @@ void Bird::Separation(Bird **birds){
  		S[Y] = S[Y] + r[X];
 	}
 
-	S = maths.normalization(S);*/
+	S = maths.normalization(S);
 }
 
 void Bird::Cohesion(Bird **birds){
-/*	for(unsigned i=0 ; i<numBirds ; i++){
+	for(unsigned i=0 ; i<numBirds ; i++){
 		D = maths.distEuclideana(p, birds[i].p)
 		if(D <= Cmax){
 			C[X] = C[X] + p[X];
@@ -119,11 +105,11 @@ void Bird::Cohesion(Bird **birds){
  		}	
 	}
 
-	C = maths.normalization(S);*/
+	C = maths.normalization(S);
 }
 
 void Bird::Alignment(Bird **birds){
-/*	for(unsigned i=0 ; i<numBirds ; i++){
+	for(unsigned i=0 ; i<numBirds ; i++){
 		D = maths.distEuclideana(v, birds[i].v)
 		if(D <= Amax){
 			C[X] = C[X] + v[X];
@@ -131,7 +117,7 @@ void Bird::Alignment(Bird **birds){
  		}
 	}
 
-	A = maths.normalization(S);*/
+	A = maths.normalization(S);
 }
 
 void Bird::updatePosition(){

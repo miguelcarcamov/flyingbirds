@@ -103,26 +103,25 @@ double *Math::minV(double *vector, double scalar){
 }
 
 double *Math::normalizeSteps(double *vector, double *actualVelocity){
-  double module = 0;
+  double module = 1;
   double *oldVector = vector;
   double x = vector[0];
   double y = vector[1];
 
   //STEP 1
   module = sqrt(pow(x,2)+pow(y,2));
-  vector[0]=x/module;
-  vector[1]=y/module;
-
+  vector[0] = x/module;
+  vector[1] = y/module;
 
   //STEP2
 
-  vector[0]=vector[0]*2.0;
-  vector[2]=vector[1]*2.0;
+  vector[0] = vector[0]*2.0;
+  vector[2] = vector[1]*2.0;
 
   //STEP 3
 
-  vector[0]=vector[0]-actualVelocity[0];
-  vector[1]=vector[1]-actualVelocity[1];
+  vector[0] = vector[0] - actualVelocity[0];
+  vector[1] = vector[1] - actualVelocity[1];
 
   //STEP 4
 
