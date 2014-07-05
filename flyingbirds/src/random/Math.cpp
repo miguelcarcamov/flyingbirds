@@ -42,9 +42,12 @@ double Math::roundZero(double number)
         return number;
 }
 
-double *Math::calculatePosition(double radio)
+double *Math::calculatePosition()
 {
   double p[2];
+  //oansdoansd
+  //kiasdoasd
+  double merge ql;
   double angle = uniform(0,2*PI);
   double radius = sqrt(uniform(0,1))*radio;
 
