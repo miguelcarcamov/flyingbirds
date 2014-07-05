@@ -62,5 +62,5 @@ double Math::euclideanDistance(double *p, double *q){
   double distance = sqrt(pow(x,2)+pow(y,2));
 
 
-  return distance
+  return distance;
 }
