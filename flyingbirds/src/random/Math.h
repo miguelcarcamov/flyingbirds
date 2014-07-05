@@ -16,6 +16,8 @@ class Math{
         double roundZero(double number);
         double *calculatePosition(double radius);
         double euclideanDistance(double *p, double *q);
+        double *maxV(double *vector, double scalar);
+        double *minV(double *vector, double scalar);
 
 };
 

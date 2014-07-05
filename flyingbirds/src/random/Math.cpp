@@ -64,3 +64,24 @@ double Math::euclideanDistance(double *p, double *q){
 
   return distance;
 }
+
+double *Math::maxV(double *vector, double scalar){
+  int sizeofvector = sizeof(vector)/sizeof(vector[0]);
+  for(int i=0; i< sizeofvector ;i++){
+    if(vector[i] <= scalar){
+      vector[i]=scalar;
+    }
+  }
+  return vector;
+}
+
+double *Math::minV(double *vector, double scalar){
+  int sizeofvector = sizeof(vector)/sizeof(vector[0]);
+  for(int i=0; i< sizeofvector; i++){
+    if(vector[i] >= scalar){
+      vector[i]=scalar;
+    }
+  }
+  return vector;
+
+}
