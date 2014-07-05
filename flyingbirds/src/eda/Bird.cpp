@@ -40,18 +40,18 @@ Bird::Bird(int radio){
 }
 
 void Bird::main(){
-	double avance_x = 1;
-	double avance_y = 1;
+	double avance_x;
+	double avance_y;
 
 	while(true){
 /*		unsigned miliseconds = 5;
 		usleep(miliseconds * 1000);*/
 		//avance_x = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
 		//avance_y = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
-		/*avance_x = this->Vx;
-		avance_y = this->Vx;*/
+		avance_x = this->Vx;
+		avance_y = this->Vx;
 
-		cout << "X " << avance_x << " :: Y " << avance_y << endl;
+		//cout << "X " << avance_x << " :: Y " << avance_y << endl;
 
 		int x_anterior = this->Px;
 		int y_anterior = this->Py;
@@ -73,8 +73,8 @@ void Bird::main(){
 		//Direccion = -atan2(destino_x - x, destino_y - y) * 180 / PI;
 		
 		//printf("(%d, %d) %f\n", p[x], p[y], Dir);
-		unsigned miliseconds = 100;
-		usleep(miliseconds * 100000);
+		unsigned miliseconds = 10000;
+		usleep(miliseconds * 1000);
 	}
 }
 
