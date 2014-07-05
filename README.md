@@ -31,16 +31,17 @@ Done tasks
 	- [ ] Travel max speed
 	- [ ] Travel max force
 	- [ ] Travel acceleration
- 	- [ ] Weights
+ 	- [X] Weights
+ 	- [X] Birds toroid
 - [x] Bird class
 - [x] Make world 640x640
 - [ ] Separate, alineate and cohesionate birds.
 - [ ] Apply forces
-- [ ] Give a random position to 'em without srand() 
-- [ ] Give a random direction to 'em between [0, 2*pi] without srand()
+- [X] Give a random position to 'em without srand() 
+- [X] Give a random direction to 'em between [0, 2*pi] without srand()
 
 Compiling
 ==================
-make run
+	$ make flying
 
 

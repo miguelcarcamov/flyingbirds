@@ -26,7 +26,8 @@ Bird::Bird(int radio){
 	this->Px = P[0];
 	this->Py = P[1];
 
-	this->Dir = math.calculateDirection();
+	this->Dir = 270;
+	//this->Dir = math.calculateDirection();
 
 	double *V = math.calculateVelocity(VInit, Dir);
 	this->Vx = V[0];
@@ -42,40 +43,50 @@ Bird::Bird(int radio){
 }
 
 void Bird::main(){
-	double avance_x = 0;
-	double avance_y = 0;
+	/*double avance_x = 0;
+	double avance_y = 0;*/
+
+	double Xn = 0;	//Axis X next
+	double Yn = 0;	//Axis Y next
+
+	double Xp = 0;	//Axis X present
+	double Yp = 0;	//Axis Y present
+
+	double Vx = 0;	//Velocity X
+	double Vy = 0;	//Velocity Y
 
 	while(true){
-/*		unsigned miliseconds = 5;
-		usleep(miliseconds * 1000);*/
-		//avance_x = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
-		//avance_y = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
-		avance_x = this->Vx;
-		avance_y = this->Vy;
+		Vx = this->Vx;
+		Vy = this->Vy;
 
-		//cout << "X " << avance_x << " :: Y " << avance_y << endl;
+		Xp = this->Px;
+		Yp = this->Py;
 
-		int x_anterior = this->Px;
-		int y_anterior = this->Py;
+		//d_i+1 = d_i + v_i
+		Xn = Xp + Vx;		
+		Yn = Yp + Vy;		
 
 		//Axis X
-		if(this->Px + avance_x >= MAX_X){
-			this->Px = MIN_X;
+		if(Xn > MAX_X){
+			Xn = MIN_X + (Xn - MAX_X);
+		} 
+		else if(Xn < MIN_X){
+			Xn = MAX_X - (Xn - MIN_X);
 		}
 
-		this->Px += + avance_x;
+		this->Px = Xn;
 
-		//Axis Y
-		if(this->Py + avance_y >= MAX_Y){
-			this->Py = MIN_Y;
+		//Axis X
+		if(Yn > MAX_Y){
+			Yn = MIN_Y + (Yn - MAX_Y);
+		} 
+		else if(Yn < MIN_Y){
+			Yn = MAX_Y - (Yn - MIN_Y);
 		}
 
-		this->Py += avance_y;
+		this->Py = Yn;
 
-		//Direccion = -atan2(destino_x - x, destino_y - y) * 180 / PI;
-		
-		//printf("(%d, %d) %f\n", p[x], p[y], Dir);
-		unsigned miliseconds = 1;
+		unsigned miliseconds = 5;
 		usleep(miliseconds * 1000000);
 	}
 }

@@ -19,7 +19,7 @@
 
 //Global Variable
 Bird **birds;
-int numBirds = 100;
+int numBirds = 1;
 
 Graphics::Graphics(){
 	Math math = Math();
@@ -42,7 +42,6 @@ void Graphics::draw(){
 		glTranslated(AxisX, AxisY, 0.0);
 	  	glRotated(Direction, 0.0, 0.0, 1.0);
 
-		
 		/*
 			Se mantienen estas proporciones:
   			Base: 1
