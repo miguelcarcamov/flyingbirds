@@ -86,7 +86,7 @@ void Bird::main(){
 
 		this->Py = Yn;
 
-		unsigned miliseconds = numBirds/16;
+		unsigned miliseconds = numBirds/25;
 		usleep(miliseconds * 1000000);
 	}
 }
