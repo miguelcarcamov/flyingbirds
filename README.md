@@ -32,7 +32,7 @@ Done tasks
 	- [ ] Travel max force
 	- [ ] Travel acceleration
  	- [X] Weights
- 	- [X] Birds Toroid
+ 	- [X] Birds toroid
 - [x] Bird class
 - [x] Make world 640x640
 - [ ] Separate, alineate and cohesionate birds.
