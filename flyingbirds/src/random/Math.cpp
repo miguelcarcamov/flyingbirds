@@ -57,8 +57,8 @@ double *Math::calculatePosition(double radio)
 }
 
 double Math::euclideanDistance(double *p, double *q){
-  x = q[0]-p[0];
-  y = q[1]-p[1];
+  double x = q[0]-p[0];
+  double y = q[1]-p[1];
   distance = sqrt(pow(x,2)+pow(y,2));
 
 
