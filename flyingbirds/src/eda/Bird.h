@@ -25,7 +25,7 @@ public:
 
 	public:
 		//Constructor
-		Bird(double x, double y, double direccion);
+		Bird(int radio);
 		~Bird(){};
 
 		//Methods

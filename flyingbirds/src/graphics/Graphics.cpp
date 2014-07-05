@@ -15,11 +15,11 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-#define RADIO_CREACION 50
+#define RADIO_CREACION 100
 
 //Global Variable
 Bird **birds;
-int numBirds = 30;
+int numBirds = 100;
 
 Graphics::Graphics(){
 	Math math = Math();
@@ -67,7 +67,7 @@ void Graphics::draw(){
 	      	glVertex3f(-5, 0, 0); // Primer vertice
 	      	glVertex3f( 5, 0, 0); // Segundo vertice
 	      	glVertex3f( 0, 5, 0); // Tercer vertice
-	    	glEnd(); // Fin del dibujo
+	    glEnd(); // Fin del dibujo
 
 	    // Deshago las operaciones de rotacion y translacion
 	    glRotatef(-180, 0, 0, 1);
@@ -179,21 +179,19 @@ void Graphics::initGraphics(){
 	int min_y = WIN_WIDTH / 2 - RADIO_CREACION;
 
 	birds = new Bird * [numBirds];
-	cout << "Hola mundo" << endl;
-	double *pos;
+	//cout << "Inicializacion de las aves culiadas" << endl;
+	//double *pos;
     
     for (unsigned i = 0; i < numBirds; i++)
-    {
-    	pos = math.calculatePosition(RADIO_CREACION);
-    	
+    {  	
 /*    	int x = rand()%(max_x - min_x) + min_x;
     	int y = rand()%(max_y - min_y) + min_y;*/
     	/*printf("%d %d\n", x, y); // Imprime las coordenadas obtenidas*/
     	//printf("%d %d\n", pos[0], pos[1]); // Imprime las coordenadas obtenidas
 	/*	birds[i] = new Bird(x, y, 0);*/
-    	cout << "X: "<< pos[0] << " Y: " << pos[1] << endl;
+    	//cout << "X: "<< pos[0] << " Y: " << pos[1] << endl;
 
-		birds[i] = new Bird(pos[0], pos[1], 0);
+		birds[i] = new Bird(RADIO_CREACION);
     }
     
     setup();

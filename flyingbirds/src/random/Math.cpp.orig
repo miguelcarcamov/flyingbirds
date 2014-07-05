@@ -42,12 +42,9 @@ double Math::roundZero(double number)
         return number;
 }
 
-double *Math::calculatePosition()
+double *Math::calculatePosition(double radio)
 {
   double p[2];
-  //oansdoansd
-  //kiasdoasd
-  double merge ql;
   double angle = uniform(0,2*PI);
   double radius = sqrt(uniform(0,1))*radio;
 
@@ -71,27 +68,10 @@ double Math::euclideanDistance(double *p, double *q){
   double y = q[1]-p[1];
   double distance = sqrt(pow(x,2)+pow(y,2));
 
+<<<<<<< HEAD
+  return distance
+=======
 
   return distance;
-}
-
-double *Math::maxV(double *vector, double scalar){
-  int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  for(int i=0; i< sizeofvector ;i++){
-    if(vector[i] <= scalar){
-      vector[i]=scalar;
-    }
-  }
-  return vector;
-}
-
-double *Math::minV(double *vector, double scalar){
-  int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  for(int i=0; i< sizeofvector; i++){
-    if(vector[i] >= scalar){
-      vector[i]=scalar;
-    }
-  }
-  return vector;
-
+>>>>>>> f530755a7221391e5090288ce55ac21d7d3ac5be
 }
