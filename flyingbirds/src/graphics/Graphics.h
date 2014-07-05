@@ -27,12 +27,10 @@ class Graphics {
 
 		//Methods
 		static void draw();
-		//void dibujarCuadrados();
 		static void dibujarLineasRojas();
 		void setup();
 		static void display();
 		void initGraphics();
-		//void handleKeypress(int key, int x, int y);
 };
 
 #endif

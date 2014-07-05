@@ -42,8 +42,8 @@ Bird::Bird(int radio){
 }
 
 void Bird::main(){
-	double avance_x;
-	double avance_y;
+	double avance_x = 0;
+	double avance_y = 0;
 
 	while(true){
 /*		unsigned miliseconds = 5;
@@ -63,46 +63,22 @@ void Bird::main(){
 			this->Px = MIN_X;
 		}
 
-		this->Px = this->Px + avance_x;
+		this->Px += + avance_x;
 
 		//Axis Y
 		if(this->Py + avance_y >= MAX_Y){
 			this->Py = MIN_Y;
 		}
 
-		this->Py = this->Py + avance_y;
+		this->Py += avance_y;
 
 		//Direccion = -atan2(destino_x - x, destino_y - y) * 180 / PI;
 		
 		//printf("(%d, %d) %f\n", p[x], p[y], Dir);
-		unsigned miliseconds = 100000;
-		usleep(miliseconds * 1000);
+		unsigned miliseconds = 1;
+		usleep(miliseconds * 1000000);
 	}
 }
-
-/*void Bird::Mover(double sumar_x, double sumar_y){
-	this->x += sumar_x;
-	this->y += sumar_y;
-}
-
-void Bird::Rotar(float angulo){
-	this->Direccion = angulo;
-}
-*/
-/*void Bird::Draw(){
-	double rotate_x = 1.0f;
-	double rotate_y = 1.0f;
-
-	glTranslatef(x, y, 0.0f);
-	glRotatef(Direccion, 0, 0, 1);
-    glBegin(GL_TRIANGLES);
-		glVertex3f(-0.5, -15, 0);//triangle one first vertex
-      	glVertex3f( 0.5, -15, 0);//triangle one second vertex
-      	glVertex3f( 0,  -13.1, 0);//triangle one third vertex    
-    glEnd();
-	glRotatef(-Direccion, 0, 0, 1);
-	glTranslatef(-x, -y, 0.0f);
-}*/
 
 void Bird::Separation(Bird **birds){
 /*	double r[2];
