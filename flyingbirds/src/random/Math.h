@@ -15,7 +15,7 @@ class Math{
         double uniform(double a, double b);
         double roundZero(double number);
         double *calculatePositionInit(double radius);
-        double *calculatePosition(double scalar, double angle);
+        double *calculateVelocity(double scalar, double angle);
         double calculateDirection();
         double euclideanDistance(double *p, double *q);
         double *maxV(double *vector, double scalar);

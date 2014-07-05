@@ -42,7 +42,7 @@ void Graphics::draw(){
 
   		AxisX     = birds[i]->Px;
 		AxisY 	  = birds[i]->Py;
-  		Direction = birds[i]->Dir;
+  		Direction = birds[i]->Dir - 90;
   		//cout << birds[i]->p[0] << "::" << birds[i]->p[1] << endl;
   		//cout << "Dibuje" << endl;
   		//birds[i]->Draw();
@@ -71,7 +71,7 @@ void Graphics::draw(){
 	      	glVertex3f( 0,  1.936491, 0); // Tercer vertice*/
 	      	glVertex3f(-5, 0, 0); // Primer vertice
 	      	glVertex3f( 5, 0, 0); // Segundo vertice
-	      	glVertex3f( 0, 5, 0); // Tercer vertice
+	      	glVertex3f( 0, 15, 0); // Tercer vertice
 	    glEnd(); // Fin del dibujo
 
 	    // Deshago las operaciones de rotacion y translacion

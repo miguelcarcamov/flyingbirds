@@ -28,9 +28,11 @@ Bird::Bird(int radio){
 
 	this->Dir = math.calculateDirection();
 
-	double *V = math.calculatePosition(VInit, Dir);
+	double *V = math.calculateVelocity(VInit, Dir);
 	this->Vx = V[0];
 	this->Vy = V[1];
+
+	//cout << "Vx " << Vx << " :: Vy " << Vy << endl;
 
 	this->S = 0;
 	this->C = 0;
@@ -49,7 +51,7 @@ void Bird::main(){
 		//avance_x = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
 		//avance_y = rand() % MAXIMO_DESPLAZAMIENTO - MAXIMO_DESPLAZAMIENTO / 2;
 		avance_x = this->Vx;
-		avance_y = this->Vx;
+		avance_y = this->Vy;
 
 		//cout << "X " << avance_x << " :: Y " << avance_y << endl;
 
@@ -73,7 +75,7 @@ void Bird::main(){
 		//Direccion = -atan2(destino_x - x, destino_y - y) * 180 / PI;
 		
 		//printf("(%d, %d) %f\n", p[x], p[y], Dir);
-		unsigned miliseconds = 10000;
+		unsigned miliseconds = 100000;
 		usleep(miliseconds * 1000);
 	}
 }

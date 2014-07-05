@@ -56,11 +56,11 @@ double *Math::calculatePositionInit(double radio)
   return p;
 }
 
-double *Math::calculatePosition(double scalar, double angle){
+double *Math::calculateVelocity(double scalar, double angle){
   double vector[2];
 
-  vector[0] = scalar*cos((angle*2*PI)/180);
-  vector[1] = scalar*sin((angle*2*PI)/180);
+  vector[0] = scalar*cos((angle*PI)/180);
+  vector[1] = scalar*sin((angle*PI)/180);
   
   return vector;
 }
