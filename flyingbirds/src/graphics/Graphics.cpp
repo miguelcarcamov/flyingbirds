@@ -19,7 +19,7 @@
 
 //Global Variable
 Bird **birds;
-int numBirds = 1;
+int numBirds = 100;
 
 Graphics::Graphics(){
 	Math math = Math();
