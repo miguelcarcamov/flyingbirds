@@ -29,7 +29,7 @@ public:
 	void setAlignment(double alignment);
 	//Methods
 	void help_printing();
-	void FunctionGetOptions(int argc, char **argv);
+	void GetOpt(int argc, char **argv);
 
 };
 

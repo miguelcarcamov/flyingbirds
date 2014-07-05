@@ -9,20 +9,31 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 
-#include <vector>
 #include "eda/Bird.h"
 #include "random/Math.h"
+#include "getOptions/getOptions.h"
 
-#include <iostream>
-using namespace std;
+#define WIN_WIDTH  640
+#define WIN_HEIGHT  640
+#define PADDING_X  30
+#define PADDING_Y  30
+
+#define MAX_X WIN_WIDTH - PADDING_X
+#define MAX_Y WIN_HEIGHT - PADDING_
+#define MIN_X PADDING_X
+#define MIN_Y PADDING_Y
+
+#define RADIO_CREACION 100
+
+/*#include <iostream>
+using namespace std;*/
 
 class Graphics {
-	//vector<Bird*> birds;
-	Math math;
-
 	public:
+		Math math;
+
 		//Constructor
-		Graphics();
+		Graphics(int numBirdsInput);
 		~Graphics(){};
 
 		//Methods
@@ -30,7 +41,7 @@ class Graphics {
 		static void dibujarLineasRojas();
 		void setup();
 		static void display();
-		void initGraphics();
+		void initGraphics(getOptions weights);
 };
 
 #endif

@@ -1,28 +1,12 @@
 #include "Graphics.h"
-#include "random/Math.h"
 
-#define STEP_ROTACION 10
-#define MAXIMO_DESPLAZAMIENTO 10
-#define PI 3.1416
-
-#define WIN_WIDTH  640
-#define WIN_HEIGHT  640
-#define PADDING_X  30
-#define PADDING_Y  30
-
-#define MAX_X WIN_WIDTH - PADDING_X // limite derecho hasta donde un ave puede llegar horizontalmente
-#define MAX_Y WIN_HEIGHT - PADDING_Y // limite superior hasta donde un ave puede llegar verticalmente
-#define MIN_X PADDING_X
-#define MIN_Y PADDING_Y
-
-#define RADIO_CREACION 100
-
-//Global Variable
+//Global variable
 Bird **birds;
-int numBirds = 1;
+int numBirds;
 
-Graphics::Graphics(){
-	Math math = Math();
+Graphics::Graphics(int numBirdsInput){
+	math = Math();
+	numBirds = numBirdsInput;
 }
 
 void Graphics::draw(){
@@ -35,29 +19,28 @@ void Graphics::draw(){
 		AxisX     = birds[i]->Px;
    		AxisY 	  = birds[i]->Py;
 		Direction = birds[i]->Dir - 90;
+		
 		glPushMatrix();
-  		glColor3d(1, 1, 1);
+	  		glColor3d(1, 1, 1);
+	  		//Operacion para el triangulo
+			glTranslated(AxisX, AxisY, 0.0);
+		  	glRotated(Direction, 0.0, 0.0, 1.0);
 
-  	//Operacion para el triangulo
-		glTranslated(AxisX, AxisY, 0.0);
-	  	glRotated(Direction, 0.0, 0.0, 1.0);
+			/*
+				Se mantienen estas proporciones:
+	  			Base: 1
+					Altura: 1.9364916731
+					Lado (isosceles): 2
+			*/
+			glBegin(GL_TRIANGLES); // Inicio del dibujo
+	      	glVertex3d(-0.5, 0, 0); // Primer vertice
+	      	glVertex3d( 0.5, 0, 0); // Segundo vertice
+	      	glVertex3d( 0, 1.9364916731, 0); // Tercer vertice
+	    	glEnd(); // Fin del dibujo
 
-		/*
-			Se mantienen estas proporciones:
-  			Base: 1
-				Altura: 1.9364916731
-				Lado (isosceles): 2
-		*/
-
-		glBegin(GL_TRIANGLES); // Inicio del dibujo
-      	glVertex3d(-5, 0, 0); // Primer vertice
-      	glVertex3d( 5, 0, 0); // Segundo vertice
-      	glVertex3d( 0, 15, 0); // Tercer vertice
-    	glEnd(); // Fin del dibujo
-
-    	// Deshago las operaciones de rotacion y translacion
-    	glRotated(-Direction, 0, 0, 1);
-	  	glTranslated(-AxisX, -AxisY, 0.0);
+	    	// Deshago las operaciones de rotacion y translacion
+	    	glRotated(-Direction, 0, 0, 1);
+		  	glTranslated(-AxisX, -AxisY, 0.0);
 	  	glPopMatrix();
 	}
 }
@@ -103,7 +86,7 @@ void Graphics::display(){
     }
 }
 
-void Graphics::initGraphics(){
+void Graphics::initGraphics(getOptions weights){
 	int argc = 1;	
 	char *argv[] = {"Graphics"};
 
@@ -118,7 +101,7 @@ void Graphics::initGraphics(){
     
     for (unsigned i = 0; i < numBirds; i++)
     {  	
-		birds[i] = new Bird(RADIO_CREACION);
+		birds[i] = new Bird(RADIO_CREACION, weights.getSeparation(), weights.getCohesion(), weights.getAlignment(), numBirds);
     }
     
     setup();
