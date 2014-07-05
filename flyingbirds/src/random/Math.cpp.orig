@@ -110,6 +110,20 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity){
 
   //STEP 1
   module = sqrt(pow(x,2)+pow(y,2));
+<<<<<<< HEAD
+  vector[0] = x/module;
+  vector[1] = y/module;
+
+  //STEP2
+
+  vector[0] = vector[0]*2.0;
+  vector[2] = vector[1]*2.0;
+
+  //STEP 3
+
+  vector[0] = vector[0] - actualVelocity[0];
+  vector[1] = vector[1] - actualVelocity[1];
+=======
   oldVector[0]=x/module;
   oldVector[1]=y/module;
 
@@ -123,10 +137,12 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity){
 
   oldVector[0]=oldVector[0]-actualVelocity[0];
   oldVector[1]=oldVector[1]-actualVelocity[1];
+>>>>>>> 06dfb23ab3843fdadb8f718b9a0cb73fd6e5b087
 
   //STEP 4
 
   double *vectorSi = minV(oldVector, 0.03);
+
 
   return vectorSi;
 }
