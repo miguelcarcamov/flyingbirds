@@ -1,4 +1,5 @@
 #include "Bird.h"
+#include "random/Math.h"
 
 #define STEP_ROTACION 10
 #define MAXIMO_DESPLAZAMIENTO 10
@@ -14,12 +15,12 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-Bird::Bird(double x, double y, double direccion){
-	//cout<<"Birds: X:"<< x << ":: Y:" << y << "\n";
-
-	this->x = x;
-	this->y = y;
-	this->direccion = direccion;
+Bird::Bird(int radio){
+	Math math = Math();
+	double *pos = math.calculatePosition(radio);
+	this->x = pos[0];
+	this->y = pos[1];
+	this->direccion = math.;
 }
 
 void Bird::main(){
@@ -48,12 +49,12 @@ void Bird::main(){
 		direccion = -atan2(destino_x - x, destino_y - y) * 180 / PI;
 		
 		//printf("(%d, %d) %f\n", x, y, direccion);
-		unsigned miliseconds = 20;
+		unsigned miliseconds = 5;
 		usleep(miliseconds * 1000000);
 	}
 }
 
-void Bird::Mover(double sumar_x, double sumar_y){
+/*void Bird::Mover(double sumar_x, double sumar_y){
 	this->x += sumar_x;
 	this->y += sumar_y;
 }
@@ -61,7 +62,7 @@ void Bird::Mover(double sumar_x, double sumar_y){
 void Bird::Rotar(float angulo){
 	this->direccion = angulo;
 }
-
+*/
 /*void Bird::Draw(){
 	double rotate_x = 1.0f;
 	double rotate_y = 1.0f;

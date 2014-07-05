@@ -56,11 +56,17 @@ double *Math::calculatePosition(double radio)
   return p;
 }
 
+double Math::calculateDirection()
+{
+  double angle = uniform(0,360);
+
+  return angle;
+}
+
 double Math::euclideanDistance(double *p, double *q){
   x = q[0]-p[0];
   y = q[1]-p[1];
   distance = sqrt(pow(x,2)+pow(y,2));
-
 
   return distance
 }
