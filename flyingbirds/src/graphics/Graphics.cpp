@@ -15,9 +15,14 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-#define RADIO_CREACION 100
+#define RADIO_CREACION 10
 
+//Global Variable
 Bird **birds;
+
+Graphics::Graphics(){
+	Math math = Math();
+}
 
 // drawing box square
 void Graphics::draw(){
@@ -175,13 +180,21 @@ void Graphics::initGraphics(){
 	int min_y = WIN_WIDTH / 2 - RADIO_CREACION;
 
 	birds = new Bird * [numBirds];
+	cout << "Hola mundo" << endl;
+	double *pos;
     
     for (unsigned i = 0; i < numBirds; i++)
     {
-    	int x = rand()%(max_x - min_x) + min_x;
-    	int y = rand()%(max_y - min_y) + min_y;
-    	//printf("%d %d\n", x, y); // Imprime las coordenadas obtenidas
-		birds[i] = new Bird(x, y, 0);
+    	pos = math.calculatePosition(RADIO_CREACION);
+    	
+/*    	int x = rand()%(max_x - min_x) + min_x;
+    	int y = rand()%(max_y - min_y) + min_y;*/
+    	/*printf("%d %d\n", x, y); // Imprime las coordenadas obtenidas*/
+    	//printf("%d %d\n", pos[0], pos[1]); // Imprime las coordenadas obtenidas
+	/*	birds[i] = new Bird(x, y, 0);*/
+    	cout << "X: "<< pos[0] << " Y: " << pos[1] << endl;
+
+		birds[i] = new Bird(pos[0], pos[1], 0);
     }
     
     setup();

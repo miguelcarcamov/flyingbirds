@@ -11,8 +11,8 @@
 
 _Task Bird {
 public:
-	int x;
-	int y;
+	double x;
+	double y;
 
 	int destino_x;
 	int destino_y;
@@ -25,7 +25,7 @@ public:
 
 	public:
 		//Constructor
-		Bird(int x, int y, double direccion);
+		Bird(double x, double y, double direccion);
 		~Bird(){};
 
 		//Methods
@@ -33,9 +33,9 @@ public:
 		void Rotar(float angulo);
 		void Draw();
 		//Force
-		void Separation();
-		void Cohesion();
-		void Alignmet();
+		void Separation(Bird **birds);
+		void Cohesion(Bird **birds);
+		void Alignment(Bird **birds);
 		void updatePosition();
 };
 

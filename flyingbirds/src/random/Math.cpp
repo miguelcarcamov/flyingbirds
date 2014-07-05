@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-
 Random Math::random = Random();
 
 Math::Math(){}
@@ -14,27 +13,9 @@ Random Math::getRandom()
   	return this->random;
 }
 
-double Math::getX(){
-  return this->x;
-}
-
-double Math::getY(){
-  return this->y;
-}
-
 void Math::setRandom(Random random)
 {
   	this->random = random;
-}
-
-void Math::setX(double x)
-{
-    this-> x = x;
-}
-
-void Math::setY(double y)
-{
-    this->y = y;
 }
 
 double Math::uniform(double a, double b)
@@ -61,12 +42,18 @@ double Math::roundZero(double number)
         return number;
 }
 
-void Math::calculatePosition(double radio)
+double *Math::calculatePosition(double radio)
 {
+  double p[2];
+  p[0] = 1.5;
+  p[1] = 2.5;
   double angle = uniform(0,2*PI);
-  double radius = sqrt(uniform(0,1)*radio);
-  
-  this->x = radius * cos(angle);
+  double radius = sqrt(uniform(0,1))*radio;
 
-  this->y = radius * sin(angle);
+  p[0] = radius*cos(angle) + 320;
+  p[1] = radius*sin(angle) + 320;
+  
+  //cout<<"Datos: X:"<< p[0] << ":: Y:" << p[1] << ":: Angle: "<< angle << endl;
+
+  return p;
 }

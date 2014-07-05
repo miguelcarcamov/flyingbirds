@@ -11,13 +11,18 @@
 
 #include <vector>
 #include "eda/Bird.h"
+#include "random/Math.h"
+
+#include <iostream>
+using namespace std;
 
 class Graphics {
 	//vector<Bird*> birds;
+	Math math;
 
 	public:
 		//Constructor
-		Graphics(){};
+		Graphics();
 		~Graphics(){};
 
 		//Methods

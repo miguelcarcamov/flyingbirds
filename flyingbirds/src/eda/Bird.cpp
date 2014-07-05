@@ -14,7 +14,9 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-Bird::Bird(int x, int y, double direccion){
+Bird::Bird(double x, double y, double direccion){
+	//cout<<"Birds: X:"<< x << ":: Y:" << y << "\n";
+
 	this->x = x;
 	this->y = y;
 	this->direccion = direccion;
@@ -75,17 +77,16 @@ void Bird::Rotar(float angulo){
 	glTranslatef(-x, -y, 0.0f);
 }*/
 
-void Bird::Separation(){
-//void Bird::Separation(Birds **birds){
+void Bird::Separation(Bird **birds){
 /*	double r[2];
-	for(unsigned i=0 ; i<numBirs ; i++){
+	for(unsigned i=0 ; i<numBirds ; i++){
 		D = maths.distEuclideana(p, birds[i].p)
 		if(D > Dmax){
 			r[X] = 0;
 			r[Y] = 0;
 		} else {
-			r[X] = (p[X] - numBirs[i].p[X]) / D;
-			r[Y] = (p[Y] - numBirs[i].p[Y]) / D;
+			r[X] = (p[X] - numBirds[i].p[X]) / D;
+			r[Y] = (p[Y] - numBirds[i].p[Y]) / D;
  		}
 
  		S[X] = S[X] + r[X];
@@ -95,24 +96,28 @@ void Bird::Separation(){
 	S = maths.normalization(S);*/
 }
 
-void Bird::Cohesion(){
-/*	double r[2];
-	for(unsigned i=0 ; i<numBirs ; i++){
+void Bird::Cohesion(Bird **birds){
+/*	for(unsigned i=0 ; i<numBirds ; i++){
 		D = maths.distEuclideana(p, birds[i].p)
-		if(D > Dmax){
-			S[X] = S[X] + r[X];
- 		S[Y] = S[Y] + r[X];
-		} else {
-			S[X] = S[X] + r[X];
- 			S[Y] = S[Y] + r[X];
+		if(D <= Cmax){
+			C[X] = C[X] + p[X];
+ 			C[Y] = C[Y] + p[Y];
  		}	
 	}
 
-	S = maths.normalization(S)*/;
+	C = maths.normalization(S);*/
 }
 
-void Bird::Alignmet(){
+void Bird::Alignment(Bird **birds){
+/*	for(unsigned i=0 ; i<numBirds ; i++){
+		D = maths.distEuclideana(v, birds[i].v)
+		if(D <= Amax){
+			C[X] = C[X] + v[X];
+ 			C[Y] = C[Y] + v[Y];
+ 		}
+	}
 
+	A = maths.normalization(S);*/
 }
 
 void Bird::updatePosition(){
