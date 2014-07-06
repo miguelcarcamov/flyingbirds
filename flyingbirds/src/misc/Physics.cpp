@@ -165,6 +165,6 @@ void Physics::updatePosition(Bird **flock, Bird *bird){
 
 	//cout << "Vfx: " << Vfn[0] << "Vfy" << Vfn[1] << endl;
 
-	//bird->Vx = Vfn[0];
-	//bird->Vy = Vfn[1];
+	bird->Vx = Vfn[0];
+	bird->Vy = Vfn[1];
 }
