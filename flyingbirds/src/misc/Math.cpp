@@ -1,6 +1,5 @@
-#include <cstdlib>
-#include <cmath>
-#include "random/Math.h"
+#include "misc/Math.h"
+
 #include <iostream>
 using namespace std;
 

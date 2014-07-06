@@ -1,7 +1,11 @@
 #ifndef MATH_H_INCLUDED
 #define MATH_H_INCLUDED
-#define PI 3.1415926535897932384626433832795 
-#include "Random.h"
+
+#include <cstdlib>
+#include <cmath>
+#include "misc/Random.h"
+
+#define PI 3.1415926535897932384626433832795
 
 class Math{
 

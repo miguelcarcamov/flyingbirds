@@ -52,14 +52,7 @@ public:
 		~Bird(){};
 
 		//Methods
-		void Mover(double sumar_x, double sumar_y);
-		void Rotar(float angulo);
-		void Draw();
-		//Force
-		void Separation(Bird **birds);
-		void Cohesion(Bird **birds);
-		void Alignment(Bird **birds);
-		void updatePosition();
+		void Move();
 };
 
 #endif

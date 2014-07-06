@@ -3,14 +3,13 @@
 
 #include <uC++.h>
 
-#include <cmath>
-
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
 
 #include "eda/Bird.h"
-#include "random/Math.h"
+#include "misc/Math.h"
+#include "misc/Physics.h"
 #include "getOptions/getOptions.h"
 
 #define WIN_WIDTH  640

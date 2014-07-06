@@ -1,5 +1,4 @@
 #include "Graphics.h"
-#include "random/Math.h"
 
 //Global variable
 Bird **birds;

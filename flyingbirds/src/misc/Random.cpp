@@ -1,14 +1,11 @@
-#include "random/Random.h"
+#include "misc/Random.h"
 #include <cstdio>
 
 long Random::seed[STREAMS]={DEFAULT};
 int Random::initialized = 0;
 int Random::stream = 0;
 
-
-Random::Random(){
-
-}
+Random::Random(){}
 
 double Random::calcRandom(void){
 	const long Q = MODULUS / MULTIPLIER;
