@@ -55,7 +55,8 @@ double *Math::calculatePositionInit(double radio)
   return p;
 }
 
-double *Math::calculateVelocity(double scalar, double angle){
+double *Math::calculateVelocity(double scalar, double angle)
+{
   double vector[2];
 
   vector[0] = scalar*cos((angle*PI)/180);
@@ -71,16 +72,15 @@ double Math::calculateDirection()
   return angle;
 }
 
-double Math::euclideanDistance(double *p, double *q){
-  double x = q[0]-p[0];
-  double y = q[1]-p[1];
-  double distance = sqrt(pow(x,2)+pow(y,2));
-
+double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
+{
+  double distance = sqrt(pow(Qx-Px,2)+pow(Qy-Py,2));
 
   return distance;
 }
 
-double *Math::maxV(double *vector, double scalar){
+double *Math::maxV(double *vector, double scalar)
+{
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
   for(int i=0; i< sizeofvector ;i++){
     if(vector[i] <= scalar){
@@ -90,7 +90,8 @@ double *Math::maxV(double *vector, double scalar){
   return vector;
 }
 
-double *Math::minV(double *vector, double scalar){
+double *Math::minV(double *vector, double scalar)
+{
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
   for(int i=0; i< sizeofvector; i++){
     if(vector[i] >= scalar){
@@ -101,7 +102,8 @@ double *Math::minV(double *vector, double scalar){
 
 }
 
-double *Math::normalizeSteps(double *vector, double *actualVelocity){
+double *Math::normalizeSteps(double *vector, double *actualVelocity)
+{
   double module = 1;
   double *oldVector = vector;
   double x = oldVector[0];
@@ -112,19 +114,15 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity){
   oldVector[0]=x/module;
   oldVector[1]=y/module;
 
-
   //STEP2
-
-  oldVector[0]=oldVector[0]*2.0;
-  oldVector[1]=oldVector[1]*2.0;
+  oldVector[0]=oldVector[0]*Vmax;
+  oldVector[1]=oldVector[1]*Vmax;
 
   //STEP 3
-
   oldVector[0]=oldVector[0]-actualVelocity[0];
   oldVector[1]=oldVector[1]-actualVelocity[1];
 
   //STEP 4
-
   double *vectorSi = minV(oldVector, 0.03);
 
   return vectorSi;

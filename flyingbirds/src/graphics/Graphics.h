@@ -29,8 +29,6 @@ using namespace std;*/
 
 class Graphics {
 	public:
-		Math math;
-
 		//Constructor
 		Graphics(int numBirdsInput);
 		~Graphics(){};

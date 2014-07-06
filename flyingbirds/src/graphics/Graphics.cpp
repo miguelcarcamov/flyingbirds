@@ -1,29 +1,29 @@
 #include "Graphics.h"
 
 //Global variable
-Bird **birds;
-int numBirds;
+Bird **flock;
+Physics physics;
+int numBirds = 0;
 
 Graphics::Graphics(int numBirdsInput){
-	math = Math();
 	numBirds = numBirdsInput;
 }
 
 void Graphics::draw(){
-	double AxisX;
-	double AxisY;
+	double P[2];
 	double Direction;
+	double *V;
 
 	for (int i = 0; i < numBirds; i++)
 	{
-		AxisX     = birds[i]->Px;
-   		AxisY 	  = birds[i]->Py;
-		Direction = birds[i]->Dir - 90;
+		P[0]      = flock[i]->Px;
+   		P[1] 	  = flock[i]->Py;
+		Direction = flock[i]->Dir - 90;
 		
 		glPushMatrix();
 	  		glColor3d(1, 1, 1);
 	  		//Operacion para el triangulo
-			glTranslated(AxisX, AxisY, 0.0);
+			glTranslated(P[0], P[1], 0.0);
 		  	glRotated(Direction, 0.0, 0.0, 1.0);
 
 			/*
@@ -40,8 +40,16 @@ void Graphics::draw(){
 
 	    	// Deshago las operaciones de rotacion y translacion
 	    	glRotated(-Direction, 0, 0, 1);
-		  	glTranslated(-AxisX, -AxisY, 0.0);
+		  	glTranslated(-P[0], -P[1], 0.0);
 	  	glPopMatrix();
+
+	  	//flock[i]->Px += 1;
+	  	//flock[i]->Py += 1;
+
+	  	V = physics.updatePosition(flock, flock[i]);
+
+	  	//flock[i]->Vx = V[0];
+	  	//flock[i]->Vy = V[1];
 	}
 }
 
@@ -97,12 +105,14 @@ void Graphics::initGraphics(getOptions weights){
     glutCreateWindow("Flying Birds"); // Titulo de la ventana
     glutDisplayFunc(display); // display es la funcion que
 
-	birds = new Bird * [numBirds];
+	flock = new Bird * [numBirds];
     
     for (unsigned i = 0; i < numBirds; i++)
     {  	
-		birds[i] = new Bird(RADIO_CREACION, weights.getSeparation(), weights.getCohesion(), weights.getAlignment(), numBirds);
+		flock[i] = new Bird(RADIO_CREACION, numBirds);
     }
+
+	physics = Physics(numBirds, weights.getSeparation(), weights.getCohesion(), weights.getAlignment());    
     
     setup();
 

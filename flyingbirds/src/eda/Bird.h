@@ -31,16 +31,6 @@ public:
 	double Vy;
 	double Dir;
 
-	double S;
-	double C;
-	double A;
-
-	double Ws;
-	double Wc;
-	double Wa;
-
-	double F;
-
 	int numBirds;
 
 	protected:
@@ -48,7 +38,7 @@ public:
 
 	public:
 		//Constructor
-		Bird(int radio, double Ws, double Wc, double Wa, int numBirds);
+		Bird(int radio, int numBirds);
 		~Bird(){};
 
 		//Methods
