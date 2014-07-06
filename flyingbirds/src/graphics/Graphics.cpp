@@ -43,13 +43,13 @@ void Graphics::draw(){
 		  	glTranslated(-P[0], -P[1], 0.0);
 	  	glPopMatrix();
 
-	  	//flock[i]->Px += 1;
-	  	//flock[i]->Py += 1;
+	  	cout << "velocidad pajaro Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
+	  	//flock[i]->Py 
 
 	  	V = physics.updatePosition(flock, flock[i]);
 
-	  	//flock[i]->Vx = V[0];
-	  	//flock[i]->Vy = V[1];
+	  	flock[i]->Vx = V[0];
+	  	flock[i]->Vy = V[1];
 	}
 }
 

@@ -14,8 +14,8 @@ Bird::Bird(int radio, int numBirds){
 	this->Dir = math.calculateDirection();
 
 	double *V = math.calculateVelocity(VInit, Dir);
-	this->Vx = 0;
-	this->Vy = 0;
+	this->Vx = V[0];
+	this->Vy = V[1];
 
 	this->numBirds = numBirds;
 }

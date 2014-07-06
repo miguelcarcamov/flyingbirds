@@ -74,6 +74,7 @@ double Math::calculateDirection()
 double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
 {
   double distance = sqrt(pow(Qx-Px,2)+pow(Qy-Py,2));
+  //cout << "Distancia: "<<distance << endl;
 
   return distance;
 }
@@ -81,18 +82,22 @@ double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
 double *Math::maxV(double *vector, double scalar)
 {
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  for(int i=0; i< sizeofvector ;i++){
+  cout << "Tamaño Vector entrante EN MAX: "<< sizeofvector << endl;
+  cout << "Vector entrante EN MAX X: "<< vector[0] << "Vector entrante en MAX Y: " << vector[1]<< endl;
+  for(int i=0; i<=sizeofvector ;i++){
     if(vector[i] <= scalar){
       vector[i]=scalar;
     }
   }
+  cout << "Vector saliente EN MAX X: "<< vector[0] << "Vector saliente en MAX Y: " << vector[1]<< endl;
   return vector;
 }
 
 double *Math::minV(double *vector, double scalar)
 {
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  for(int i=0; i< sizeofvector; i++){
+  //cout << "Tamaño Vector entrante EN MIN: "<< sizeofvector << endl;
+  for(int i=0; i<=sizeofvector; i++){
     if(vector[i] >= scalar){
       vector[i]=scalar;
     }
@@ -105,6 +110,9 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
 {
   double module = 1;
   double *oldVector = vector;
+  //cout << "VECTOR entrante a normalizar X: "<< vector[0]<<" VECTOR entrante a normalizar Y: "<<vector[1] << endl;
+  //cout << "oLDVECTOR X: "<< oldVector[0]<<" oLDVECTOR Y: "<<oldVector[1] << endl;
+
   double x = oldVector[0];
   double y = oldVector[1];
 
@@ -113,7 +121,7 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
   oldVector[0]=x/module;
   oldVector[1]=y/module;
 
-
+  //cout << "VectorNormalizado X: "<< oldVector[0]<<" VectorNormalizado Y: "<<oldVector[1] << endl;
   //STEP2
 
   oldVector[0]=oldVector[0]*V_MAX;
@@ -126,7 +134,9 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
 
   //STEP 4
 
-  double *vectorSi = minV(oldVector, 0.03);
+  double *vectorSi = minV(oldVector, F_MAX);
+
+  //cout << "VectorTotal X: "<< vectorSi[0]<<" VectorTotal Y: "<<vectorSi[1] << endl;
 
   return vectorSi;
 }
