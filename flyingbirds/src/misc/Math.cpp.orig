@@ -55,7 +55,8 @@ double *Math::calculatePositionInit(double radio)
   return p;
 }
 
-double *Math::calculateVelocity(double scalar, double angle){
+double *Math::calculateVelocity(double scalar, double angle)
+{
   double vector[2];
 
   vector[0] = scalar*cos((angle*PI)/180);
@@ -113,20 +114,27 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
   oldVector[0]=x/module;
   oldVector[1]=y/module;
 
-
   //STEP2
+<<<<<<< HEAD
 
   oldVector[0]=oldVector[0]*V_MAX;
   oldVector[1]=oldVector[1]*V_MAX;
+=======
+  oldVector[0]=oldVector[0]*Vmax;
+  oldVector[1]=oldVector[1]*Vmax;
+>>>>>>> d1b9a87487ce49376ac5a57866538397b4351b6b
 
   //STEP 3
-
   oldVector[0]=oldVector[0]-actualVelocity[0];
   oldVector[1]=oldVector[1]-actualVelocity[1];
 
   //STEP 4
+<<<<<<< HEAD
 
+  double *vectorSi = minV(oldVector, F_MAX);
+=======
   double *vectorSi = minV(oldVector, 0.03);
+>>>>>>> d1b9a87487ce49376ac5a57866538397b4351b6b
 
   return vectorSi;
 }

@@ -6,7 +6,7 @@ using namespace std;
 
 Math math = Math();
 
-Bird::Bird(int radio, double Ws, double Wc, double Wa, int numBirds){
+Bird::Bird(int radio, int numBirds){
 	double *P = math.calculatePositionInit(radio);
 	this->Px = P[0];
 	this->Py = P[1];
@@ -14,18 +14,8 @@ Bird::Bird(int radio, double Ws, double Wc, double Wa, int numBirds){
 	this->Dir = math.calculateDirection();
 
 	double *V = math.calculateVelocity(VInit, Dir);
-	this->Vx = V[0];
-	this->Vy = V[1];
-
-	this->S = 0;
-	this->C = 0;
-	this->A = 0;
-
-	this->Ws = Ws;
-	this->Wc = Wc;
-	this->Wa = Wa;
-
-	this->F = 0;
+	this->Vx = 0;
+	this->Vy = 0;
 
 	this->numBirds = numBirds;
 }

@@ -9,6 +9,7 @@
 #include "misc/Random.h"
 
 #define PI 3.1415926535897932384626433832795
+#define Vmax 2.0
 
 class Math{
 
@@ -24,7 +25,7 @@ class Math{
         double *calculatePositionInit(double radius);
         double *calculateVelocity(double scalar, double angle);
         double calculateDirection();
-        double euclideanDistance(double *p, double *q);
+        double euclideanDistance(double Px, double Py, double Qx, double Qy);
         double *maxV(double *vector, double scalar);
         double *minV(double *vector, double scalar);
         double *normalizeSteps(double *vector, double *actualVelocity);
