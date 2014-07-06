@@ -121,5 +121,8 @@ double *Physics::updatePosition(Bird **flock, Bird *bird){
 
 	double *Vfn = NULL;
 
+	bird->Vx = 1;
+	bird->Vy = 1;
+
 	return Vfn;
 }
