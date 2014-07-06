@@ -1,6 +1,9 @@
 #ifndef MATH_H_INCLUDED
 #define MATH_H_INCLUDED
 
+#define V_MAX 2.0
+#define F_MAX 0.03
+
 #include <cstdlib>
 #include <cmath>
 #include "misc/Random.h"

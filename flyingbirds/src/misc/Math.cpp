@@ -115,8 +115,8 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity){
 
   //STEP2
 
-  oldVector[0]=oldVector[0]*2.0;
-  oldVector[1]=oldVector[1]*2.0;
+  oldVector[0]=oldVector[0]*V_MAX;
+  oldVector[1]=oldVector[1]*V_MAX;
 
   //STEP 3
 
@@ -125,7 +125,7 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity){
 
   //STEP 4
 
-  double *vectorSi = minV(oldVector, 0.03);
+  double *vectorSi = minV(oldVector, F_MAX);
 
   return vectorSi;
 }

@@ -22,7 +22,7 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-#define RADIO_CREACION 100
+#define RADIO_CREACION 10
 
 /*#include <iostream>
 using namespace std;*/
