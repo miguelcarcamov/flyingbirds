@@ -12,10 +12,19 @@ Physics::Physics(int numBirdsInput, double Ws, double Wc, double Wa)
 	this->Wc = Wc;
 	this->Wa = Wa;
 
+	this->S[0] = 0;
+	this->S[1] = 0;
+
+	this->C[0] = 0;
+	this->C[1] = 0;
+
+	this->A[0] = 0;
+	this->A[1] = 0;
+
 	numBirdsPhysics = numBirdsInput;
 }
 
-double *Physics::Separation(Bird **flock, Bird *bird){
+void Physics::Separation(Bird **flock, Bird *bird){
 	int m=0;
 	double S[2];
 	double r[2];
@@ -23,8 +32,8 @@ double *Physics::Separation(Bird **flock, Bird *bird){
 		double D = maths.euclideanDistance(bird->Px, bird->Py, flock[i]->Px, flock[i]->Py);
 		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
 		if((D <= Dmax) && (D != 0)){
-			//cout << "PAJARO X: "<<bird->Px <<"PAJARO Y: "<<bird->Py<<endl;
-			//cout << "PAJAROS X: "<<flock[i]->Px<<"PAJAROS Y: "<<flock[i]->Py<<endl;
+			//cout << "Bird Px: "<<bird->Px <<"Bird Py: "<<bird->Py<<endl;
+			//cout << "Flock "<< i <<" Px: "<<flock[i]->Px<<" :: Flock "<< i <<" Py: "<<flock[i]->Py<<endl;
 			r[0] = (bird->Px - flock[i]->Px) / D;
 			r[1] = (bird->Py - flock[i]->Py) / D;
 
@@ -40,19 +49,20 @@ double *Physics::Separation(Bird **flock, Bird *bird){
 		double V[2];
 		V[0] = bird->Vx;
 		V[1] = bird->Vy;
-		//cout << "S X: "<< S[0]<<" S  Y: "<<S[1] << endl;
+		//cout << "Bird "<< "Sx: "<< S[0]<<" Sy: "<<S[1] << endl;
 		double *Snorm = maths.normalizeSteps(S, V);
-		return Snorm;
+		//cout << "Bird "<< "Snorm X: "<< Snorm[0]<<" Snorm Y: "<< Snorm[1] << endl;
+		
+		this->S[0] = Snorm[0];
+		this->S[1] = Snorm[1];
+		
 	}else{
-		S[0]=0;
-		S[1]=0;
-		return S;
+		this->S[0] = 0;
+		this->S[1] = 0;
 	}
-
-	
 }
 
-double *Physics::Cohesion(Bird **flock, Bird *bird){
+void Physics::Cohesion(Bird **flock, Bird *bird){
 	int m=0;
 	double C[2];
 	for(unsigned i=0 ; i<numBirdsPhysics ; i++){
@@ -78,21 +88,17 @@ double *Physics::Cohesion(Bird **flock, Bird *bird){
 		V[1] = bird->Vy;
 		//cout << "Despues C X: "<< C[0]<<" Despues C  Y: "<<C[1] << endl;
 		double *Cnorm = maths.normalizeSteps(C, V);
-		return Cnorm;
+
+		this->C[0] = Cnorm[0];
+		this->C[1] = Cnorm[1];
 	}else{
 		C[0]=0;
 		C[1]=0;
-		return C;
 	}
-
-	
-
-	
 }
 
-double *Physics::Alignment(Bird **flock, Bird *bird){
+void Physics::Alignment(Bird **flock, Bird *bird){
 	int m=0;
-	double A[2];
 	for(unsigned i=0 ; i<numBirdsPhysics ; i++){
 		double D = maths.euclideanDistance(bird->Px, bird->Py, flock[i]->Px, flock[i]->Py);
 		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
@@ -112,24 +118,23 @@ double *Physics::Alignment(Bird **flock, Bird *bird){
 		double V[2];
 		A[0] = bird->Vx;
 		A[1] = bird->Vy;
-		//cout << "A X: "<< A[0]<<" A  Y: "<<A[1] << endl;
+		//cout << "Ax: "<< A[0]<<" Ay: "<< A[1] << endl;
 		double *Anorm = maths.normalizeSteps(A, V);
 
-		return Anorm;
+		this->A[0] = Anorm[0];
+		this->A[1] = Anorm[1];
 	}else{
-
-		A[0]=0;
-		A[1]=0;
-		return A;
+		this->A[0]=0;
+		this->A[1]=0;
 	}
 
 	
 }
 
-double *Physics::updatePosition(Bird **flock, Bird *bird){
-	double *S = Separation(flock, bird);
-	double *C = Cohesion(flock, bird);
-	double *A = Alignment(flock, bird);
+void Physics::updatePosition(Bird **flock, Bird *bird){
+	Separation(flock, bird);
+	Cohesion(flock, bird);
+	Alignment(flock, bird);
 
 	S[0] = Ws*S[0];
 	S[1] = Ws*S[1];
@@ -140,18 +145,26 @@ double *Physics::updatePosition(Bird **flock, Bird *bird){
 	A[0] = Wa*A[0];
 	A[1] = Wa*A[1];
 
-	double F[2]={0,0};				//ai = Fi
+	//cout << "Sx " << S[0] << " Sy " << S[1] << endl;
+	//cout << "Cx " << C[0] << " Cy " << C[1] << endl;
+	//cout << "Ax " << A[0] << " Ay " << A[1] << endl;
+
+	double F[2] = {0,0};				//ai = Fi
 
 	F[0] = S[0] + C[0] + A[0];
 	F[1] = S[1] + C[1] + C[1];
 
+	//cout << "Fx " << F[0] << " Fy " << F[1] << endl;
+
 	double Vf[2] = {0,0};
-	cout <<"Velocidad pájaro X: "<< bird->Vx <<"Velocidad pajaro Y: "<< bird->Vy <<endl;
+	//cout <<"Velocidad pájaro X: "<< bird->Vx <<"Velocidad pajaro Y: "<< bird->Vy <<endl;
 	Vf[0] = F[0] + bird->Vx;
 	Vf[1] = F[1] + bird->Vy;
 
 	double *Vfn = maths.maxV(Vf, Vmax);
 
+	//cout << "Vfx: " << Vfn[0] << "Vfy" << Vfn[1] << endl;
 
-	return Vfn;
+	//bird->Vx = Vfn[0];
+	//bird->Vy = Vfn[1];
 }

@@ -12,7 +12,6 @@ Graphics::Graphics(int numBirdsInput){
 void Graphics::draw(){
 	double P[2];
 	double Direction;
-	double *V;
 
 	for (int i = 0; i < numBirds; i++)
 	{
@@ -33,9 +32,9 @@ void Graphics::draw(){
 					Lado (isosceles): 2
 			*/
 			glBegin(GL_TRIANGLES); // Inicio del dibujo
-	      	glVertex3d(-0.5, 0, 0); // Primer vertice
-	      	glVertex3d( 0.5, 0, 0); // Segundo vertice
-	      	glVertex3d( 0, 1.9364916731, 0); // Tercer vertice
+	      	glVertex3d(-1.5, 0, 0); // Primer vertice
+	      	glVertex3d( 1.5, 0, 0); // Segundo vertice
+	      	glVertex3d( 0, 7.9364916731, 0); // Tercer vertice
 	    	glEnd(); // Fin del dibujo
 
 	    	// Deshago las operaciones de rotacion y translacion
@@ -43,13 +42,12 @@ void Graphics::draw(){
 		  	glTranslated(-P[0], -P[1], 0.0);
 	  	glPopMatrix();
 
-	  	cout << "velocidad pajaro Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
+	  	//cout << "Velocidad pajaro "<< i <<" Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
 	  	//flock[i]->Py 
 
-	  	V = physics.updatePosition(flock, flock[i]);
+	  	physics.updatePosition(flock, flock[i]);
 
-	  	flock[i]->Vx = V[0];
-	  	flock[i]->Vy = V[1];
+	  	//cout << "Velocidad update pajaro "<< i <<" Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
 	}
 }
 
@@ -112,7 +110,11 @@ void Graphics::initGraphics(getOptions weights){
 		flock[i] = new Bird(RADIO_CREACION, numBirds);
     }
 
-	physics = Physics(numBirds, weights.getSeparation(), weights.getCohesion(), weights.getAlignment());    
+    double Ws = weights.getSeparation();
+    double Wc = weights.getCohesion();
+    double Wa = weights.getAlignment();
+
+	physics = Physics(numBirds, Ws, Wc, Wa);    
     
     setup();
 

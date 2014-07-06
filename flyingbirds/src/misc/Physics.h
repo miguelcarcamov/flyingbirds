@@ -4,6 +4,8 @@
 #define Dmax 25
 #define Vmax 2.0
 
+#include <uC++.h>
+
 #include "eda/Bird.h"
 #include "misc/Math.h"
 #include "misc/Random.h"
@@ -14,20 +16,25 @@
 class Physics{
     public:
     	//Attributes
+        //Weights
     	double Ws;
     	double Wc;
     	double Wa;
-        
+        //Force
+        double S[2];
+        double C[2];
+        double A[2];
+
         //Constructor
         Physics(){};
         Physics(int numBirdsInput, double Ws, double Wc, double Wa);
         ~Physics(){};
         
         //Methods
-        double *Separation(Bird **flock, Bird *bird);
-        double *Cohesion(Bird **flock, Bird *bird);
-        double *Alignment(Bird **flock, Bird *bird);
-        double *updatePosition(Bird **flock, Bird *bird);
+        void Separation(Bird **flock, Bird *bird);
+        void Cohesion(Bird **flock, Bird *bird);
+        void Alignment(Bird **flock, Bird *bird);
+        void updatePosition(Bird **flock, Bird *bird);
 };
 
 #endif // PHYSICS_H_INCLUDED

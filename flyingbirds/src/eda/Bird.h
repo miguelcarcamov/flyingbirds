@@ -3,16 +3,6 @@
 
 #include <uC++.h>
 
-#include <cmath>
-
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
-
-#define STEP_ROTACION 10
-#define MAXIMO_DESPLAZAMIENTO 10
-
-#define VInit 1
 #define WIN_WIDTH  640
 #define WIN_HEIGHT  640
 #define PADDING_X  30
@@ -22,6 +12,8 @@
 #define MAX_Y WIN_HEIGHT - PADDING_Y // limite superior hasta donde un ave puede llegar verticalmente
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
+
+#define VInit 1
 
 _Task Bird {
 public:

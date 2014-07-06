@@ -82,14 +82,14 @@ double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
 double *Math::maxV(double *vector, double scalar)
 {
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  cout << "Tamaño Vector entrante EN MAX: "<< sizeofvector << endl;
-  cout << "Vector entrante EN MAX X: "<< vector[0] << "Vector entrante en MAX Y: " << vector[1]<< endl;
+  //cout << "Tamaño Vector entrante EN MAX: "<< sizeofvector << endl;
+  //cout << "Vector entrante EN MAX X: "<< vector[0] << "Vector entrante en MAX Y: " << vector[1]<< endl;
   for(int i=0; i<=sizeofvector ;i++){
     if(vector[i] <= scalar){
       vector[i]=scalar;
     }
   }
-  cout << "Vector saliente EN MAX X: "<< vector[0] << "Vector saliente en MAX Y: " << vector[1]<< endl;
+  //cout << "Vector saliente EN MAX X: "<< vector[0] << "Vector saliente en MAX Y: " << vector[1]<< endl;
   return vector;
 }
 
