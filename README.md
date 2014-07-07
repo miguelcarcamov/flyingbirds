@@ -25,20 +25,21 @@ Installing OpenGL and G++
 
 Done tasks
 ==================
-- [ ] Drawing birds
+- [x] Drawing birds
 	- [x] Triangle base 1.0 and 2.0 sides
 	- [x] Not random direction
-	- [ ] Travel max speed
-	- [ ] Travel max force
-	- [ ] Travel acceleration
- 	- [X] Weights
- 	- [X] Birds toroid
+	- [x] Travel max speed
+	- [x] Travel max force
+	- [x] Travel acceleration
+ 	- [x] Weights
+ 	- [x] Birds toroid
 - [x] Bird class
 - [x] Make world 640x640
-- [ ] Separate, alineate and cohesionate birds.
-- [ ] Apply forces
-- [X] Give a random position to 'em without srand() 
-- [X] Give a random direction to 'em between [0, 2*pi] without srand()
+- [x] Separate, alineate and cohesionate birds.
+- [x] Apply forces
+- [x] Give a random position to 'em without srand() 
+- [x] Give a random direction to 'em between [0, 2*pi] without srand()
+- [ ] Bug for distance toroid
 
 Compiling
 ==================
