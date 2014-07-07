@@ -40,6 +40,7 @@ Done tasks
 - [x] Give a random position to 'em without srand() 
 - [x] Give a random direction to 'em between [0, 2*pi] without srand()
 - [ ] Bug for distance toroid
+- [ ] Rotation bird for velocity
 
 Compiling
 ==================
