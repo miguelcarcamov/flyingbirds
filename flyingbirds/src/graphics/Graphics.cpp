@@ -2,7 +2,6 @@
 
 //Global variable
 Bird **flock;
-Physics physics;
 int numBirds = 0;
 
 Graphics::Graphics(int numBirdsInput){
@@ -18,7 +17,6 @@ void Graphics::draw(){
 		P[0]      = flock[i]->Px;
    		P[1] 	  = flock[i]->Py;
 		Direction = flock[i]->Dir - 90;
-
 
 		glPushMatrix();
 	  		glColor3d(1, 1, 1);
@@ -42,13 +40,6 @@ void Graphics::draw(){
 	    	glRotated(-Direction, 0, 0, 1);
 		  	glTranslated(-P[0], -P[1], 0.0);
 	  	glPopMatrix();
-
-	  	//cout << "Velocidad pajaro "<< i <<" Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
-	  	//flock[i]->Py 
-
-	  	physics.updatePosition(flock, flock[i]);
-
-	  	//cout << "Velocidad update pajaro "<< i <<" Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
 	}
 }
 
@@ -104,18 +95,16 @@ void Graphics::initGraphics(getOptions weights){
     glutCreateWindow("Flying Birds"); // Titulo de la ventana
     glutDisplayFunc(display); // display es la funcion que
 
-	flock = new Bird * [numBirds];
-    
-    for (unsigned i = 0; i < numBirds; i++)
-    {  	
-		flock[i] = new Bird(RADIO_CREACION, numBirds);
-    }
-
     double Ws = weights.getSeparation();
     double Wc = weights.getCohesion();
     double Wa = weights.getAlignment();
 
-	physics = Physics(numBirds, Ws, Wc, Wa);    
+	flock = new Bird * [numBirds];
+    
+    for (unsigned i = 0; i < numBirds; i++)
+    {  	
+		flock[i] = new Bird(RADIO_CREACION, numBirds, Ws, Wc, Wa, flock);
+    }
     
     setup();
 

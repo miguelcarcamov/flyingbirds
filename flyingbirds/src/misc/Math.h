@@ -28,7 +28,7 @@ class Math{
         double *calculateVelocity(double scalar, double angle);
         double calculateDirection();
         double euclideanDistance(double Px, double Py, double Qx, double Qy);
-        void  maxV(Bird *bird, double scalar);
+        void  maxV(double Vx, double Vy, double scalar);
         double *minV(double *vector, double scalar);
         double *normalizeSteps(double *vector, double *actualVelocity);
 

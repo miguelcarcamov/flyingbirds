@@ -82,21 +82,21 @@ double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
   return distance;
 }
 
-void Math::maxV(Bird *bird, double scalar)
+void Math::maxV(double Vx, double Vy, double scalar)
 {
-    if(abs(bird->Vx) >= scalar){
-      if(bird->Vx < 0){
-        bird->Vx = -scalar;
+    if(abs(Vx) >= scalar){
+      if(Vx < 0){
+        Vx = -scalar;
       }else{
-        bird->Vx = scalar;
+        Vx = scalar;
       }
     }
 
-    if(abs(bird->Vy) >= scalar){
-      if(bird->Vy < 0){
-        bird->Vy = -scalar;
+    if(abs(Vy) >= scalar){
+      if(Vy < 0){
+        Vy = -scalar;
       }else{
-        bird->Vy = scalar;
+        Vy = scalar;
       }
     }
 

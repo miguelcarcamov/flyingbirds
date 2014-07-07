@@ -2,6 +2,14 @@
 #define BIRD_H
 
 #include <uC++.h>
+//#include <uBarrier.h>
+
+#include "eda/Bird.h"
+#include "misc/Math.h"
+#include "misc/Random.h"
+
+#include <cstdlib>
+#include <cmath>
 
 #define WIN_WIDTH  640
 #define WIN_HEIGHT  640
@@ -13,28 +21,46 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
+#define Dmax 25
+#define Vmax 2.0
 #define VInit 1.0
 
 _Task Bird {
 public:
+	//Position
 	double Px;
 	double Py;
 	double Vx;
 	double Vy;
 	double Dir;
 
-	int numBirds;
+    //Force
+    double S[2];
+    double C[2];
+    double A[2];
+
+    //Weights
+	double Ws;
+	double Wc;
+	double Wa;
+
+	//int numBirds;
+	Bird **flock;
 
 	protected:
 		void main();
 
 	public:
 		//Constructor
-		Bird(int radio, int numBirds);
+		Bird(int radio, int numBirdsInput, double Ws, double Wc, double Wa, Bird **flock);
 		~Bird(){};
 
 		//Methods
 		void Move();
+		void Separation();
+        void Cohesion();
+        void Alignment();
+        void updatePosition();
 };
 
 #endif

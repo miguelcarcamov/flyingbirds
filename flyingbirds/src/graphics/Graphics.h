@@ -9,7 +9,6 @@
 
 #include "eda/Bird.h"
 #include "misc/Math.h"
-#include "misc/Physics.h"
 #include "getOptions/getOptions.h"
 
 #define WIN_WIDTH  640
