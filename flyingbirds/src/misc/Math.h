@@ -7,6 +7,8 @@
 #include <cstdlib>
 #include <cmath>
 #include "misc/Random.h"
+#include "eda/Bird.h"
+
 
 #define PI 3.1415926535897932384626433832795
 #define Vmax 2.0
@@ -26,7 +28,7 @@ class Math{
         double *calculateVelocity(double scalar, double angle);
         double calculateDirection();
         double euclideanDistance(double Px, double Py, double Qx, double Qy);
-        double *maxV(double *vector, double scalar);
+        void  maxV(Bird *bird, double scalar);
         double *minV(double *vector, double scalar);
         double *normalizeSteps(double *vector, double *actualVelocity);
 

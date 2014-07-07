@@ -13,7 +13,7 @@
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 
-#define VInit 1
+#define VInit 1.0
 
 _Task Bird {
 public:

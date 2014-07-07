@@ -18,7 +18,8 @@ void Graphics::draw(){
 		P[0]      = flock[i]->Px;
    		P[1] 	  = flock[i]->Py;
 		Direction = flock[i]->Dir - 90;
-		
+
+
 		glPushMatrix();
 	  		glColor3d(1, 1, 1);
 	  		//Operacion para el triangulo

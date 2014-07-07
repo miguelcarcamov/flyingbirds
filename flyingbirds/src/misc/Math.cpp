@@ -20,7 +20,7 @@ void Math::setRandom(Random random)
 double Math::uniform(double a, double b)
 {
 	if(a>=b){
-		cout<<"ERROR. Uniform[a,b] with a>=b. Correct the input and run again."<<endl;
+		//cout<<"ERROR. Uniform[a,b] with a>=b. Correct the input and run again."<<endl;
 		exit(0);
 	}
 	else{
@@ -60,6 +60,9 @@ double *Math::calculateVelocity(double scalar, double angle){
 
   vector[0] = scalar*cos((angle*PI)/180);
   vector[1] = scalar*sin((angle*PI)/180);
+
+  //cout << "velocidadcalculada x"<<vector[0]<<endl;
+  //cout << "velocidadcalculada y"<<vector[1]<<endl;
   
   return vector;
 }
@@ -79,18 +82,24 @@ double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
   return distance;
 }
 
-double *Math::maxV(double *vector, double scalar)
+void Math::maxV(Bird *bird, double scalar)
 {
-  int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  //cout << "Tamaño Vector entrante EN MAX: "<< sizeofvector << endl;
-  //cout << "Vector entrante EN MAX X: "<< vector[0] << "Vector entrante en MAX Y: " << vector[1]<< endl;
-  for(int i=0; i<=sizeofvector ;i++){
-    if(vector[i] <= scalar){
-      vector[i]=scalar;
+    if(abs(bird->Vx) >= scalar){
+      if(bird->Vx < 0){
+        bird->Vx = -scalar;
+      }else{
+        bird->Vx = scalar;
+      }
     }
-  }
-  //cout << "Vector saliente EN MAX X: "<< vector[0] << "Vector saliente en MAX Y: " << vector[1]<< endl;
-  return vector;
+
+    if(abs(bird->Vy) >= scalar){
+      if(bird->Vy < 0){
+        bird->Vy = -scalar;
+      }else{
+        bird->Vy = scalar;
+      }
+    }
+
 }
 
 double *Math::minV(double *vector, double scalar)
@@ -98,8 +107,11 @@ double *Math::minV(double *vector, double scalar)
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
   //cout << "Tamaño Vector entrante EN MIN: "<< sizeofvector << endl;
   for(int i=0; i<=sizeofvector; i++){
-    if(vector[i] >= scalar){
-      vector[i]=scalar;
+    if(abs(vector[i]) >= scalar){
+      if(vector[i] < 0)
+        vector[i]=-scalar;
+      else
+        vector[i]=scalar;
     }
   }
   return vector;
@@ -126,14 +138,14 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
 
   oldVector[0]=oldVector[0]*V_MAX;
   oldVector[1]=oldVector[1]*V_MAX;
-
+  
   //STEP 3
 
   oldVector[0]=oldVector[0]-actualVelocity[0];
   oldVector[1]=oldVector[1]-actualVelocity[1];
 
   //STEP 4
-
+  //cout << "VectorNormalizado X: "<< oldVector[0]<<" VectorNormalizado Y: "<<oldVector[1] << endl;
   double *vectorSi = minV(oldVector, F_MAX);
 
   //cout << "VectorTotal X: "<< vectorSi[0]<<" VectorTotal Y: "<<vectorSi[1] << endl;

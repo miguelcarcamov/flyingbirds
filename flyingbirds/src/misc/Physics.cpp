@@ -8,9 +8,11 @@ int numBirdsPhysics;
 
 Physics::Physics(int numBirdsInput, double Ws, double Wc, double Wa)
 {
+
 	this->Ws = Ws;
 	this->Wc = Wc;
 	this->Wa = Wa;
+
 
 	this->S[0] = 0;
 	this->S[1] = 0;
@@ -26,8 +28,8 @@ Physics::Physics(int numBirdsInput, double Ws, double Wc, double Wa)
 
 void Physics::Separation(Bird **flock, Bird *bird){
 	int m=0;
-	double S[2];
-	double r[2];
+	double S[2]={0,0};
+	double r[2]={0,0};
 	for(unsigned i=0 ; i<numBirdsPhysics ; i++){
 		double D = maths.euclideanDistance(bird->Px, bird->Py, flock[i]->Px, flock[i]->Py);
 		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
@@ -64,7 +66,7 @@ void Physics::Separation(Bird **flock, Bird *bird){
 
 void Physics::Cohesion(Bird **flock, Bird *bird){
 	int m=0;
-	double C[2];
+	double C[2]={0,0};
 	for(unsigned i=0 ; i<numBirdsPhysics ; i++){
 		double D = maths.euclideanDistance(bird->Px, bird->Py, flock[i]->Px, flock[i]->Py);
 		//Cmax = Dmax
@@ -86,11 +88,12 @@ void Physics::Cohesion(Bird **flock, Bird *bird){
 		double V[2];
 		V[0] = bird->Vx;
 		V[1] = bird->Vy;
-		//cout << "Despues C X: "<< C[0]<<" Despues C  Y: "<<C[1] << endl;
+		
 		double *Cnorm = maths.normalizeSteps(C, V);
 
 		this->C[0] = Cnorm[0];
 		this->C[1] = Cnorm[1];
+		//cout << "Despues C X: "<< C[0]<<" Despues C  Y: "<<C[1] << endl;
 	}else{
 		C[0]=0;
 		C[1]=0;
@@ -99,6 +102,7 @@ void Physics::Cohesion(Bird **flock, Bird *bird){
 
 void Physics::Alignment(Bird **flock, Bird *bird){
 	int m=0;
+	double A[2]={0,0};
 	for(unsigned i=0 ; i<numBirdsPhysics ; i++){
 		double D = maths.euclideanDistance(bird->Px, bird->Py, flock[i]->Px, flock[i]->Py);
 		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
@@ -118,7 +122,7 @@ void Physics::Alignment(Bird **flock, Bird *bird){
 		double V[2];
 		A[0] = bird->Vx;
 		A[1] = bird->Vy;
-		//cout << "Ax: "<< A[0]<<" Ay: "<< A[1] << endl;
+		//cout << "Ax: "<< A[0]<<" Ay: "<< A[1] << endl;	
 		double *Anorm = maths.normalizeSteps(A, V);
 
 		this->A[0] = Anorm[0];
@@ -156,15 +160,12 @@ void Physics::updatePosition(Bird **flock, Bird *bird){
 
 	//cout << "Fx " << F[0] << " Fy " << F[1] << endl;
 
-	double Vf[2] = {0,0};
-	//cout <<"Velocidad pájaro X: "<< bird->Vx <<"Velocidad pajaro Y: "<< bird->Vy <<endl;
-	Vf[0] = F[0] + bird->Vx;
-	Vf[1] = F[1] + bird->Vy;
-
-	double *Vfn = maths.maxV(Vf, Vmax);
+	
+	bird->Vx = F[0] + bird->Vx;
+	bird->Vy = F[1] + bird->Vy;
+	usleep(100000);
+	maths.maxV(bird, Vmax);
 
 	//cout << "Vfx: " << Vfn[0] << "Vfy" << Vfn[1] << endl;
 
-	bird->Vx = Vfn[0];
-	bird->Vy = Vfn[1];
 }

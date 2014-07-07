@@ -23,7 +23,7 @@ Bird::Bird(int radio, int numBirds){
 void Bird::main(){
 	while(true){
 		Move();
-		unsigned miliseconds = numBirds/25;
+		unsigned miliseconds = 10*numBirds/25;
 		usleep(miliseconds * 1000000);
 	}
 }
