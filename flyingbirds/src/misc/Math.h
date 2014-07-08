@@ -28,8 +28,8 @@ class Math{
         double *calculateVelocity(double scalar, double angle);
         double calculateDirection();
         double euclideanDistance(double Px, double Py, double Qx, double Qy);
-        void  minV(double Vx, double Vy, double scalar);
-        double *minV(double *vector, double scalar);
+        void  minV1(double Vx, double Vy, double scalar);
+        double *minV2(double *vector, double scalar);
         double *normalizeSteps(double *vector, double *actualVelocity);
 
 };

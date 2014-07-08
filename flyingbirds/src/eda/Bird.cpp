@@ -244,7 +244,7 @@ void Bird::updatePosition()
 	this->Vy = F[1] + this->Vy;
 	//usleep(100000);
 	//FIX pleaseeee !!!
-	math.minV(this->Vx, this->Vy, Vmax);					//Fix name
+	math.minV1(this->Vx, this->Vy, Vmax);					//Fix name
 
 	//cout << "Vfx: " << Vfn[0] << "Vfy" << Vfn[1] << endl;
 }

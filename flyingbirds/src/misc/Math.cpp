@@ -86,7 +86,7 @@ double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
   }
 }
 
-void Math::minV(double Vx, double Vy, double scalar)
+void Math::minV1(double Vx, double Vy, double scalar)
 {
     if(abs(Vx) >= scalar){
       if(Vx < 0){
@@ -106,7 +106,7 @@ void Math::minV(double Vx, double Vy, double scalar)
 
 }
 
-double *Math::minV(double *vector, double scalar)
+double *Math::minV2(double *vector, double scalar)
 {
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
   //cout << "Tamaño Vector entrante EN MIN: "<< sizeofvector << endl;
@@ -150,7 +150,7 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
 
   //STEP 4
   //cout << "VectorNormalizado X: "<< oldVector[0]<<" VectorNormalizado Y: "<<oldVector[1] << endl;
-  double *vectorSi = minV(oldVector, F_MAX);
+  double *vectorSi = minV2(oldVector, F_MAX);
 
   //cout << "VectorTotal X: "<< vectorSi[0]<<" VectorTotal Y: "<<vectorSi[1] << endl;
 
