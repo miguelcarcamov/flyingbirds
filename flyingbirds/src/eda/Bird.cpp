@@ -76,9 +76,11 @@ void Bird::Move()
 
 	//Axis X
 	if(Xn > MAX_X){
+		Xp = 0;
 		Xn = MIN_X + (Xn - MAX_X);
 	} 
 	else if(Xn < MIN_X){
+		Xp = 360;
 		Xn = MAX_X - (Xn - MIN_X);
 	}
 
@@ -86,9 +88,11 @@ void Bird::Move()
 
 	//Axis X
 	if(Yn > MAX_Y){
+		Yp = 0;
 		Yn = MIN_Y + (Yn - MAX_Y);
 	} 
 	else if(Yn < MIN_Y){
+		Yp = 360;
 		Yn = MAX_Y - (Yn - MIN_Y);
 	}
 
@@ -150,7 +154,7 @@ void Bird::Cohesion()
 		double D = math.euclideanDistance(this->Px, this->Py, this->flock[i]->Px, this->flock[i]->Py);
 		//Cmax = Dmax
 		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
-		if((D <= Dmax) && (D != 0)){
+		if((D <= Cmax) && (D != 0)){
 			//cout << "PAJARO X: "<<this->Px <<"PAJARO Y: "<<this->Py<<endl;
 			//cout << "PAJAROS X: "<<this->flock[i]->Px<<"PAJAROS Y: "<<this->flock[i]->Py<<endl;
 			C[0] += this->flock[i]->Px;
@@ -242,9 +246,11 @@ void Bird::updatePosition()
 	
 	this->Vx = F[0] + this->Vx;
 	this->Vy = F[1] + this->Vy;
-	//usleep(100000);
-	//FIX pleaseeee !!!
-	math.maxV(this->Vx, this->Vy, Vmax);					//Fix name
+
+	double *Vn = math.min(this->Vx, this->Vy, Vmax);
+
+	this->Vx = Vn[0];
+	this->Vy = Vn[1];
 
 	//cout << "Vfx: " << Vfn[0] << "Vfy" << Vfn[1] << endl;
 }

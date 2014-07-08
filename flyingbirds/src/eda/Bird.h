@@ -2,7 +2,7 @@
 #define BIRD_H
 
 #include <uC++.h>
-//#include <uBarrier.h>
+#include <uBarrier.h>
 
 #include "eda/Bird.h"
 #include "misc/Math.h"
@@ -22,6 +22,7 @@
 #define MIN_Y PADDING_Y
 
 #define Dmax 25
+#define Cmax 40
 #define Vmax 2.0
 #define VInit 1.0
 

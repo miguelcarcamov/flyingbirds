@@ -86,38 +86,22 @@ double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
   }
 }
 
-void Math::maxV(double Vx, double Vy, double scalar)
+double *Math::min(double x, double y, double scalar)
 {
-    if(abs(Vx) >= scalar){
-      if(Vx < 0){
-        Vx = -scalar;
-      }else{
-        Vx = scalar;
-      }
-    }
+  double vector[2];
 
-    if(abs(Vy) >= scalar){
-      if(Vy < 0){
-        Vy = -scalar;
-      }else{
-        Vy = scalar;
-      }
-    }
+  double module = sqrt(pow(x,2)+pow(y,2));
 
-}
-
-double *Math::minV(double *vector, double scalar)
-{
-  int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  //cout << "Tamaño Vector entrante EN MIN: "<< sizeofvector << endl;
-  for(int i=0; i<=sizeofvector; i++){
-    if(abs(vector[i]) >= scalar){
-      if(vector[i] < 0)
-        vector[i]=-scalar;
-      else
-        vector[i]=scalar;
-    }
+  if (module > Vmax){
+    vector[0] = (x/module) * Vmax;
+    vector[1] = (y/module) * Vmax;
   }
+  else
+  {
+    vector[0] = x;
+    vector[1] = y;
+  }
+
   return vector;
 
 }
@@ -139,18 +123,16 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
 
   //cout << "VectorNormalizado X: "<< oldVector[0]<<" VectorNormalizado Y: "<<oldVector[1] << endl;
   //STEP2
-
   oldVector[0]=oldVector[0]*V_MAX;
   oldVector[1]=oldVector[1]*V_MAX;
   
   //STEP 3
-
   oldVector[0]=oldVector[0]-actualVelocity[0];
   oldVector[1]=oldVector[1]-actualVelocity[1];
 
   //STEP 4
   //cout << "VectorNormalizado X: "<< oldVector[0]<<" VectorNormalizado Y: "<<oldVector[1] << endl;
-  double *vectorSi = minV(oldVector, F_MAX);
+  double *vectorSi = min(oldVector[0], oldVector[1],F_MAX);
 
   //cout << "VectorTotal X: "<< vectorSi[0]<<" VectorTotal Y: "<<vectorSi[1] << endl;
 
