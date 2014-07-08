@@ -33,7 +33,7 @@ void Graphics::draw(){
 			glBegin(GL_TRIANGLES); // Inicio del dibujo
 	      	glVertex3d(-1.5, 0, 0); // Primer vertice
 	      	glVertex3d( 1.5, 0, 0); // Segundo vertice
-	      	glVertex3d( 0, 7.9364916731, 0); // Tercer vertice
+	      	glVertex3d( 0, 3.708099243, 0); // Tercer vertice
 	    	glEnd(); // Fin del dibujo
 
 	    	// Deshago las operaciones de rotacion y translacion
@@ -105,6 +105,7 @@ void Graphics::initGraphics(getOptions weights){
     {  	
 		flock[i] = new Bird(RADIO_CREACION, numBirds, Ws, Wc, Wa, flock);
     }
+  
     
     setup();
 
