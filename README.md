@@ -58,9 +58,12 @@ Then:
 
 Where:
 
-N: Number of birds,
+N: Number of birds.
+
 s: Separation weight.
+
 c: Cohesion weight.
+
 a: Alignment weight.
 
 and:
