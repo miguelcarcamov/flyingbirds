@@ -17,7 +17,7 @@
 #define PADDING_Y  30
 
 #define MAX_X WIN_WIDTH - PADDING_X
-#define MAX_Y WIN_HEIGHT - PADDING_
+#define MAX_Y WIN_HEIGHT - PADDING_Y
 #define MIN_X PADDING_X
 #define MIN_Y PADDING_Y
 

@@ -77,9 +77,13 @@ double Math::calculateDirection()
 double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
 {
   double distance = sqrt(pow(Qx-Px,2)+pow(Qy-Py,2));
-  //cout << "Distancia: "<<distance << endl;
+  double distanceToroid = 610 - distance;
 
-  return distance;
+  if(distance < distanceToroid){
+    return distance;
+  } else {
+    return distanceToroid;
+  }
 }
 
 void Math::maxV(double Vx, double Vy, double scalar)
