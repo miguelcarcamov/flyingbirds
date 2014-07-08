@@ -24,12 +24,7 @@ void Graphics::draw(){
 			glTranslated(P[0], P[1], 0.0);
 		  	glRotated(Direction, 0.0, 0.0, 1.0);
 
-			/*
-				Se mantienen estas proporciones:
-	  			Base: 1
-					Altura: 1.9364916731
-					Lado (isosceles): 2
-			*/
+
 			glBegin(GL_TRIANGLES); // Inicio del dibujo
 	      	glVertex3d(-1.5, 0, 0); // Primer vertice
 	      	glVertex3d( 1.5, 0, 0); // Segundo vertice
@@ -93,7 +88,7 @@ void Graphics::initGraphics(getOptions weights){
     glutInitWindowPosition(300, 0); // Posicion de la ventana en pixeles
     glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT); // Tamano de la ventana en pixeles
     glutCreateWindow("Flying Birds"); // Titulo de la ventana
-    glutDisplayFunc(display); // display es la funcion que
+    glutDisplayFunc(display); 
 
     double Ws = weights.getSeparation();
     double Wc = weights.getCohesion();
