@@ -86,7 +86,7 @@ double Math::euclideanDistance(double Px, double Py, double Qx, double Qy)
   }
 }
 
-void Math::maxV(double Vx, double Vy, double scalar)
+void Math::minV(double Vx, double Vy, double scalar)
 {
     if(abs(Vx) >= scalar){
       if(Vx < 0){

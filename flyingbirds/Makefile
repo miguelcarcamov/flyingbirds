@@ -46,7 +46,7 @@ clean:
 run:
 	@ clear
 	@ echo "Execute Flying Birds"
-	@ ./bin/FlyingBirds.run -N 50 -s 0.2 -c 0.4 -a 0.4
+	@ ./bin/FlyingBirds.run -N 70 -s 0.1 -c 0.05 -a 0.85
 
 flying: clean main run
 
