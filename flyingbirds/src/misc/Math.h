@@ -30,6 +30,8 @@ class Math{
         double euclideanDistance(double Px, double Py, double Qx, double Qy);
         double *min(double x, double y, double scalar);
         double *normalizeSteps(double *vector, double *actualVelocity);
+        double *minV2(double *vector, double scalar);
+        void minV1(double Vx, double Vy, double scalar);
 
 };
 

@@ -78,6 +78,93 @@ and:
 
 Wc+Wa+Ws = 1
 
+Ways of bird working:
+=====================================
+There are two ways for the birds working:
+
+First one is:
+
+Using min function as Professor Rannou said that is:
+
+	double *Math::min(double x, double y, double scalar)
+	{	
+  		double vector[2];
+
+  		double module = sqrt(pow(x,2)+pow(y,2));
+
+  		if (module > Vmax){
+    		vector[0] = (x/module) * Vmax;
+    		vector[1] = (y/module) * Vmax;
+  		}
+  		else
+  		{
+    		vector[0] = x;
+    		vector[1] = y;
+  		}
+
+  		return vector;
+
+	}
+
+To work with this way you have to:
+
+- Uncomment line 168 in Math.cpp
+
+- Comment line 169 in Math.cpp
+
+- Uncomment line 244 in Bird.cpp
+
+- Comment line 246 in Bird.cpp
+
+- Uncomment lines 248 & 249 in Bird.cpp
+
+The second way is work with the original function, that is:
+
+	void Math::minV1(double Vx, double Vy, double scalar)
+	{
+    	if(abs(Vx) >= scalar){
+      		if(Vx < 0){
+        		Vx = -scalar;
+      	}else{
+        	Vx = scalar;
+     	 	}
+    	}
+
+    	if(abs(Vy) >= scalar){
+      		if(Vy < 0){
+        		Vy = -scalar;
+      	}else{
+        	Vy = scalar;
+      		}
+    	}
+	}
+
+	double *Math::minV2(double *vector, double scalar)
+	{
+  		int sizeofvector = sizeof(vector)/sizeof(vector[0]);
+  		for(int i=0; i<=sizeofvector; i++){
+    		if(abs(vector[i]) >= scalar){
+      			if(vector[i] < 0)
+        			vector[i]=-scalar;
+      			else
+        			vector[i]=scalar;
+   		 	}
+  		}
+  		return vector;
+	}
+
+To work with this way you have to:
+
+- Comment line 168 in Math.cpp
+
+- Uncomment line 169 in Math.cpp
+
+- Comment line 244 in Bird.cpp
+
+- Uncomment line 246 in Bird.cpp
+
+- Comment lines 248 & 249 in Bird.cpp
+
 
 Code by:
 ======================================

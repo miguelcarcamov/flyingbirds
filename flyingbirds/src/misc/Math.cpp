@@ -104,7 +104,7 @@ double *Math::min(double x, double y, double scalar)
 
 }
 
-/*FORMULA ORIGINAL
+//ORIGINAL EQUATION
 void Math::minV1(double Vx, double Vy, double scalar)
 {
     if(abs(Vx) >= scalar){
@@ -128,7 +128,6 @@ void Math::minV1(double Vx, double Vy, double scalar)
 double *Math::minV2(double *vector, double scalar)
 {
   int sizeofvector = sizeof(vector)/sizeof(vector[0]);
-  //cout << "Tamaño Vector entrante EN MIN: "<< sizeofvector << endl;
   for(int i=0; i<=sizeofvector; i++){
     if(abs(vector[i]) >= scalar){
       if(vector[i] < 0)
@@ -141,7 +140,7 @@ double *Math::minV2(double *vector, double scalar)
 
 }
 
-}*/
+
 
 double *Math::normalizeSteps(double *vector, double *actualVelocity)
 {
@@ -166,7 +165,8 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
 
   //STEP 4
 
-  double *vectorSi = min(oldVector[0], oldVector[1],F_MAX);
+  double *vectorSi = min(oldVector[0], oldVector[1], F_MAX);
+  //double *vectorSi = minV2(oldVector, F_MAX);
 
 
   return vectorSi;

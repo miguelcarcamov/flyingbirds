@@ -243,8 +243,9 @@ void Bird::updatePosition()
 
 	double *Vn = math.min(this->Vx, this->Vy, Vmax);
 
+	//math.minV1(this->Vx, this->Vy, Vmax);
+
 	this->Vx = Vn[0];
 	this->Vy = Vn[1];
-
 
 }
