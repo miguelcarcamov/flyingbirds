@@ -53,7 +53,9 @@ If you want to run flyingBirds with your own parameters first you have to write 
 	$ cd flyingbirds
 
 Then:
+
 	$ make clean
+	
 Then:
 
 	$ make
