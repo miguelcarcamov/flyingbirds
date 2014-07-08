@@ -50,9 +50,13 @@ Instructions
 ========================
 If you want to run flyingBirds with your own parameters first you have to write in your terminal:
 
-	$ make
+	$ cd flyingbirds
 
 Then:
+
+	$ make
+
+And finally:
 
 	$ ./bin/FlyingBirds.run -N 100 -s 0.6 -c 0.2 -a 0.2
 
