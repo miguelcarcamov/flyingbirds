@@ -1,6 +1,6 @@
 #
 # Flying Birds
-# by SmokeInBrain and DWladdimiroC
+# by Miguel Cárcamo and DWladdimiroC
 
 INC_DIRS = -Isrc
 
@@ -46,7 +46,7 @@ clean:
 run:
 	@ clear
 	@ echo "Execute Flying Birds"
-	@ ./bin/FlyingBirds.run -N 100 -s 0.1 -c 0.5 -a 0.4
+	@ ./bin/FlyingBirds.run -N 100 -s 0.6 -c 0.2 -a 0.2
 
 flying: clean main run
 

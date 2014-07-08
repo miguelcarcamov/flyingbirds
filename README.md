@@ -39,11 +39,36 @@ Done tasks
 - [x] Apply forces
 - [x] Give a random position to 'em without srand() 
 - [x] Give a random direction to 'em between [0, 2*pi] without srand()
-- [ ] Bug for distance toroid
-- [ ] Rotation bird about velocity
+- [x] Bug for distance toroid
+- [x] Rotation bird about velocity
 
 Compiling
 ==================
 	$ make flying
 
+Instructions
+========================
+If you want to run flying with your own parameters first you have to write in your terminal:
 
+make
+
+Then:
+
+./bin/FlyingBirds.run -N 100 -s 0.6 -c 0.2 -a 0.2
+
+Where:
+
+N: Number of birds,
+s: Separation weight.
+c: Cohesion weight.
+a: Alignment weight.
+
+and:
+
+Wc+Wa+Ws = 1
+
+
+Code by:
+======================================
+Miguel Cárcamo Vásquez.
+Daniel Wladdimiro Cottet.

@@ -20,7 +20,6 @@ void Math::setRandom(Random random)
 double Math::uniform(double a, double b)
 {
 	if(a>=b){
-		//cout<<"ERROR. Uniform[a,b] with a>=b. Correct the input and run again."<<endl;
 		exit(0);
 	}
 	else{
@@ -50,7 +49,7 @@ double *Math::calculatePositionInit(double radio)
   p[0] = 320 + radius*cos(angle);
   p[1] = 320 + radius*sin(angle);
   
-  //cout<<"Datos: X:"<< p[0] << ":: Y:" << p[1] << ":: Angle: "<< angle << endl;
+
 
   return p;
 }
@@ -61,8 +60,7 @@ double *Math::calculateVelocity(double scalar, double angle){
   vector[0] = scalar*cos((angle*PI)/180);
   vector[1] = scalar*sin((angle*PI)/180);
 
-  //cout << "velocidadcalculada x"<<vector[0]<<endl;
-  //cout << "velocidadcalculada y"<<vector[1]<<endl;
+
   
   return vector;
 }
@@ -106,12 +104,49 @@ double *Math::min(double x, double y, double scalar)
 
 }
 
+/*FORMULA ORIGINAL
+void Math::minV1(double Vx, double Vy, double scalar)
+{
+    if(abs(Vx) >= scalar){
+      if(Vx < 0){
+        Vx = -scalar;
+      }else{
+        Vx = scalar;
+      }
+    }
+
+    if(abs(Vy) >= scalar){
+      if(Vy < 0){
+        Vy = -scalar;
+      }else{
+        Vy = scalar;
+      }
+    }
+
+}
+
+double *Math::minV2(double *vector, double scalar)
+{
+  int sizeofvector = sizeof(vector)/sizeof(vector[0]);
+  //cout << "Tamaño Vector entrante EN MIN: "<< sizeofvector << endl;
+  for(int i=0; i<=sizeofvector; i++){
+    if(abs(vector[i]) >= scalar){
+      if(vector[i] < 0)
+        vector[i]=-scalar;
+      else
+        vector[i]=scalar;
+    }
+  }
+  return vector;
+
+}
+
+}*/
+
 double *Math::normalizeSteps(double *vector, double *actualVelocity)
 {
   double module = 1;
   double *oldVector = vector;
-  //cout << "VECTOR entrante a normalizar X: "<< vector[0]<<" VECTOR entrante a normalizar Y: "<<vector[1] << endl;
-  //cout << "oLDVECTOR X: "<< oldVector[0]<<" oLDVECTOR Y: "<<oldVector[1] << endl;
 
   double x = oldVector[0];
   double y = oldVector[1];
@@ -121,7 +156,6 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
   oldVector[0]=x/module;
   oldVector[1]=y/module;
 
-  //cout << "VectorNormalizado X: "<< oldVector[0]<<" VectorNormalizado Y: "<<oldVector[1] << endl;
   //STEP2
   oldVector[0]=oldVector[0]*V_MAX;
   oldVector[1]=oldVector[1]*V_MAX;
@@ -131,10 +165,9 @@ double *Math::normalizeSteps(double *vector, double *actualVelocity)
   oldVector[1]=oldVector[1]-actualVelocity[1];
 
   //STEP 4
-  //cout << "VectorNormalizado X: "<< oldVector[0]<<" VectorNormalizado Y: "<<oldVector[1] << endl;
+
   double *vectorSi = min(oldVector[0], oldVector[1],F_MAX);
 
-  //cout << "VectorTotal X: "<< vectorSi[0]<<" VectorTotal Y: "<<vectorSi[1] << endl;
 
   return vectorSi;
 }

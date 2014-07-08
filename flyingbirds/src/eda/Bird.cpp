@@ -45,10 +45,8 @@ void Bird::main()
 		unsigned miliseconds = 10*numBirdsTotal/25;
 		usleep(miliseconds * 1000000);
 
-		//uBarrier barrier(numBirdsTotal);
-		//flockComplete.wait();
+
 		updatePosition();
-		//flockComplete.signal();
 	}
 }
 
@@ -78,12 +76,12 @@ void Bird::Move()
 	if(Xn > MAX_X){
 		Xp = 0;
 		Xn = MIN_X + math.euclideanDistance(Xn, 0, MAX_X, 0);
-		//cout << "Px " << Xn;
+
 	} 
 	else if(Xn < MIN_X){
 		Xp = 360;
 		Xn = MAX_X - math.euclideanDistance(Xn, 0, MIN_X, 0);
-		//cout << "Xn " << Xn << "";
+
 	}
 
 	this->Px = Xn;
@@ -92,12 +90,11 @@ void Bird::Move()
 	if(Yn > MAX_Y){
 		Yp = 0;
 		Yn = MIN_Y + math.euclideanDistance(0, Yn, 0, MAX_Y);
-		//cout << "Py " << Yn << endl;
+
 	} 
 	else if(Yn < MIN_Y){
 		Yp = 360;
 		Yn = MAX_Y - math.euclideanDistance(0, Yn, 0, MIN_Y);
-		//cout << "Py " << Yn << endl;
 	}
 
 	this->Py = Yn;
@@ -120,10 +117,9 @@ void Bird::Separation()
 	double r[2]={0,0};
 	for(unsigned i=0 ; i<numBirdsTotal ; i++){
 		double D = math.euclideanDistance(this->Px, this->Py, this->flock[i]->Px, this->flock[i]->Py);
-		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
+
 		if((D <= Dmax) && (D != 0)){
-			//cout << "Bird Px: "<<this->Px <<"Bird Py: "<<this->Py<<endl;
-			//cout << "Flock "<< i <<" Px: "<<this->flock[i]->Px<<" :: Flock "<< i <<" Py: "<<this->flock[i]->Py<<endl;
+
 			r[0] = (this->Px - this->flock[i]->Px) / D;
 			r[1] = (this->Py - this->flock[i]->Py) / D;
 
@@ -139,9 +135,9 @@ void Bird::Separation()
 		double V[2];
 		V[0] = this->Vx;
 		V[1] = this->Vy;
-		//cout << "Bird "<< "Sx: "<< S[0]<<" Sy: "<<S[1] << endl;
+
 		double *Snorm = math.normalizeSteps(S, V);
-		//cout << "Bird "<< "Snorm X: "<< Snorm[0]<<" Snorm Y: "<< Snorm[1] << endl;
+
 		
 		this->S[0] = Snorm[0];
 		this->S[1] = Snorm[1];
@@ -158,11 +154,9 @@ void Bird::Cohesion()
 	double C[2]={0,0};
 	for(unsigned i=0 ; i<numBirdsTotal ; i++){
 		double D = math.euclideanDistance(this->Px, this->Py, this->flock[i]->Px, this->flock[i]->Py);
-		//Cmax = Dmax
-		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
+
 		if((D <= Cmax) && (D != 0)){
-			//cout << "PAJARO X: "<<this->Px <<"PAJARO Y: "<<this->Py<<endl;
-			//cout << "PAJAROS X: "<<this->flock[i]->Px<<"PAJAROS Y: "<<this->flock[i]->Py<<endl;
+
 			C[0] += this->flock[i]->Px;
  			C[1] += this->flock[i]->Py; 			
 			m++;
@@ -170,8 +164,7 @@ void Bird::Cohesion()
 	}
 
 	if(m!=0){
-		//cout << " Antes C X: "<< C[0]<<" Antes C  Y: "<<C[1] << endl;
-		//cout << "M: "<<m<<endl;
+
 		C[0] /= m;
 		C[1] /= m;
 		double V[2];
@@ -182,7 +175,7 @@ void Bird::Cohesion()
 
 		this->C[0] = Cnorm[0];
 		this->C[1] = Cnorm[1];
-		//cout << "Despues C X: "<< C[0]<<" Despues C  Y: "<<C[1] << endl;
+
 	}else{
 		C[0]=0;
 		C[1]=0;
@@ -195,11 +188,9 @@ void Bird::Alignment()
 	double A[2]={0,0};
 	for(unsigned i=0 ; i<numBirdsTotal ; i++){
 		double D = math.euclideanDistance(this->Px, this->Py, this->flock[i]->Px, this->flock[i]->Py);
-		//cout << "Distancia entre pajaro y sus pares: "<< D <<endl;
-		//Cmax = Dmax
+
 		if((D <= Dmax) && (D != 0)){
-			//cout << "PAJARO X: "<<this->Px <<"PAJARO Y: "<<this->Py<<endl;
-			//cout << "PAJAROS X: "<<this->flock[i]->Px<<"PAJAROS Y: "<<this->flock[i]->Py<<endl;
+
 			A[0] += this->flock[i]->Vx;
  			A[1] += this->flock[i]->Vy; 			
 			m++;
@@ -211,8 +202,7 @@ void Bird::Alignment()
 		A[1] /= m;
 		double V[2];
 		A[0] = this->Vx;
-		A[1] = this->Vy;
-		//cout << "Ax: "<< A[0]<<" Ay: "<< A[1] << endl;	
+		A[1] = this->Vy;	
 		double *Anorm = math.normalizeSteps(A, V);
 
 		this->A[0] = Anorm[0];
@@ -239,16 +229,14 @@ void Bird::updatePosition()
 	A[0] = Wa*A[0];
 	A[1] = Wa*A[1];
 
-	//cout << "Sx " << S[0] << " Sy " << S[1] << endl;
-	//cout << "Cx " << C[0] << " Cy " << C[1] << endl;
-	//cout << "Ax " << A[0] << " Ay " << A[1] << endl;
+
 
 	double F[2] = {0,0};				//ai = Fi
 
 	F[0] = S[0] + C[0] + A[0];
 	F[1] = S[1] + C[1] + C[1];
 
-	//cout << "Fx " << F[0] << " Fy " << F[1] << endl;
+
 	
 	this->Vx = F[0] + this->Vx;
 	this->Vy = F[1] + this->Vy;
@@ -258,5 +246,5 @@ void Bird::updatePosition()
 	this->Vx = Vn[0];
 	this->Vy = Vn[1];
 
-	//cout << "Vfx: " << Vfn[0] << "Vfy" << Vfn[1] << endl;
+
 }
