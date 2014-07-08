@@ -77,11 +77,13 @@ void Bird::Move()
 	//Axis X
 	if(Xn > MAX_X){
 		Xp = 0;
-		Xn = MIN_X + (Xn - MAX_X);
+		Xn = MIN_X + math.euclideanDistance(Xn, 0, MAX_X, 0);
+		//cout << "Px " << Xn;
 	} 
 	else if(Xn < MIN_X){
 		Xp = 360;
-		Xn = MAX_X - (Xn - MIN_X);
+		Xn = MAX_X - math.euclideanDistance(Xn, 0, MIN_X, 0);
+		//cout << "Xn " << Xn << "";
 	}
 
 	this->Px = Xn;
@@ -89,14 +91,18 @@ void Bird::Move()
 	//Axis X
 	if(Yn > MAX_Y){
 		Yp = 0;
-		Yn = MIN_Y + (Yn - MAX_Y);
+		Yn = MIN_Y + math.euclideanDistance(0, Yn, 0, MAX_Y);
+		//cout << "Py " << Yn << endl;
 	} 
 	else if(Yn < MIN_Y){
 		Yp = 360;
-		Yn = MAX_Y - (Yn - MIN_Y);
+		Yn = MAX_Y - math.euclideanDistance(0, Yn, 0, MIN_Y);
+		//cout << "Py " << Yn << endl;
 	}
 
 	this->Py = Yn;
+
+
 
 	//Update direction
 	double Dx = Xn - Xp;
