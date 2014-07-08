@@ -2,9 +2,8 @@
 
 //Global variable
 Bird **flock;
-Physics physics;
 int numBirds = 0;
-double theta = 0;
+
 Graphics::Graphics(int numBirdsInput){
 	numBirds = numBirdsInput;
 }
@@ -12,14 +11,12 @@ Graphics::Graphics(int numBirdsInput){
 void Graphics::draw(){
 	double P[2];
 	double Direction;
-	double desplazamiento[2];
 
 	for (int i = 0; i < numBirds; i++)
 	{
 		P[0]      = flock[i]->Px;
    		P[1] 	  = flock[i]->Py;
 		Direction = flock[i]->Dir - 90;
-
 
 		glPushMatrix();
 	  		glColor3d(1, 1, 1);
@@ -40,42 +37,9 @@ void Graphics::draw(){
 	    	glEnd(); // Fin del dibujo
 
 	    	// Deshago las operaciones de rotacion y translacion
-	    	glRotated(-Direction, 0.0, 0.0, 1.0);
+	    	glRotated(-Direction, 0, 0, 1);
 		  	glTranslated(-P[0], -P[1], 0.0);
 	  	glPopMatrix();
-
-	  	//cout << "Velocidad pajaro "<< i <<" Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
-	  	//flock[i]->Py 
-
-	  	physics.updatePosition(flock, flock[i]);
-	  	desplazamiento[0]=flock[i]->Px - P[0];
-	  	desplazamiento[1]=flock[i]->Px - P[1];
-	  	double x = desplazamiento[0];
-	  	double y = desplazamiento[1];
-	  	if(x > 0 && y >= 0){
-	  		theta = atan(y/x);
-	  	}else{
-	  		if(x > 0 && y < 0){
-	  			theta = atan(y/x)+2*PI;
-	  		}else{
-	  			if(x < 0){
-	  				theta = atan(y/x)+PI;
-	  			}else{
-	  				if(x == 0 && y > 0){
-	  					theta = PI/2;
-	  				}else{
-	  					if(x == 0 && y < 0){
-	  						theta = (3*PI)/2;
-	  					}
-	  				}
-	  			}
-	  		}
-	  	}
-
-
-
-
-	  	//cout << "Velocidad update pajaro "<< i <<" Graph x: "<<flock[i]->Vx << " Velocidad pajaro Graph Y:"<< flock[i]->Vy<<endl;
 	}
 }
 
@@ -131,18 +95,17 @@ void Graphics::initGraphics(getOptions weights){
     glutCreateWindow("Flying Birds"); // Titulo de la ventana
     glutDisplayFunc(display); // display es la funcion que
 
-	flock = new Bird * [numBirds];
-    
-    for (unsigned i = 0; i < numBirds; i++)
-    {  	
-		flock[i] = new Bird(RADIO_CREACION, numBirds);
-    }
-
     double Ws = weights.getSeparation();
     double Wc = weights.getCohesion();
     double Wa = weights.getAlignment();
 
-	physics = Physics(numBirds, Ws, Wc, Wa);    
+	flock = new Bird * [numBirds];
+    
+    for (unsigned i = 0; i < numBirds; i++)
+    {  	
+		flock[i] = new Bird(RADIO_CREACION, numBirds, Ws, Wc, Wa, flock);
+    }
+  
     
     setup();
 
