@@ -50,11 +50,11 @@ Instructions
 ========================
 If you want to run flying with your own parameters first you have to write in your terminal:
 
-make
+$make
 
 Then:
 
-./bin/FlyingBirds.run -N 100 -s 0.6 -c 0.2 -a 0.2
+$./bin/FlyingBirds.run -N 100 -s 0.6 -c 0.2 -a 0.2
 
 Where:
 
@@ -71,4 +71,5 @@ Wc+Wa+Ws = 1
 Code by:
 ======================================
 Miguel Cárcamo Vásquez.
+
 Daniel Wladdimiro Cottet.
