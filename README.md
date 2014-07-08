@@ -48,7 +48,7 @@ Compiling
 
 Instructions
 ========================
-If you want to run flying with your own parameters first you have to write in your terminal:
+If you want to run flyingBirds with your own parameters first you have to write in your terminal:
 
 	$ make
 
